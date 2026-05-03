@@ -21,7 +21,7 @@ export async function before(m, { conn, groupMetadata }) {
       },
       message: {
         contactMessage: {
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓\nitem1.TEL;waid=${
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:Chelzzy Bot 🤍\nitem1.TEL;waid=${
             conn.user.jid.split('@')[0]
           }:${conn.user.jid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
         }
@@ -54,7 +54,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       const welcomeText = customWelcome
         ? customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@desc/gi, groupDesc)
-        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n⚡ *𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓*`;
+        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n⚡ *Chelzzy Bot 🤍*`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,

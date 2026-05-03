@@ -47,7 +47,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args }) 
       messageText += `║ ${emoji} ${getCountryFlag(mem.id)} @${mem.id.split('@')[0]}\n`;
     }
 
-    messageText += `║\n╚══✦ 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾✦══╝`;
+    messageText += `║\n╚══✦ Chelzzy Bot 👾✦══╝`;
 
     // Miniatura para el mensaje (usando el buffer local)
     const fkontak = {
@@ -55,11 +55,11 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args }) 
         participants: "0@s.whatsapp.net", 
         remoteJid: "status@broadcast", 
         fromMe: false, 
-        id: "KeistopTagall" 
+        id: "ChelzzyBot" 
       },
       message: {
         locationMessage: {
-          name: "𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾",
+          name: "Chelzzy Bot 👾",
           jpegThumbnail: localImg
         }
       }

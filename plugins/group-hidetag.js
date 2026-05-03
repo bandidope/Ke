@@ -16,10 +16,10 @@ let handler = async (m, { conn, text, participants, isAdmin }) => {
         isForwarded: true,
         forwardingScore: 999,
         externalAdReply: {
-          title: '𝐊𝐄𝐈𝐒𝐓𝐎𝐏 ✅',
+          title: 'Chelzzy ✅',
           body: 'Notificación Oficial del Grupo',
-          thumbnailUrl: 'https://files.catbox.moe/gjvmer.jpg',
-          sourceUrl: 'https://www.whatsapp.com/',
+          thumbnailUrl: 'https://h.uguu.se/fCHakjoW.jpg',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m',
           mediaType: 1,
           renderLargerThumbnail: false 
         }
@@ -29,7 +29,7 @@ let handler = async (m, { conn, text, participants, isAdmin }) => {
     quoted: {
       key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' },
       message: { 
-        conversation: "Hola Soy 𝐊𝐄𝐈𝐒𝐓𝐎𝐏' 𝐁𝐎𝐓" 
+        conversation: "Hola Soy Chelzzy Bot" 
       }
     },
     userJid: conn.user.id 

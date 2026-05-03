@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 export async function before(m, { conn }) {
-let name = `𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓 `
+let name = `Chelzzy Bot `
 /* let imagenes = ["https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
@@ -11,15 +11,15 @@ let icono = imagenes[Math.floor(Math.random() * imagenes.length)]
 */
 
 let botdata = global.db.data.settings[conn.user.jid] || {}
-global.iconimg1 = botdata.icon1 || 'https://files.catbox.moe/gjvmer.jpg'
-global.iconimg2 = botdata.icon2 || 'https://files.catbox.moe/h403wr.jpg'
+global.iconimg1 = botdata.icon1 || 'https://h.uguu.se/fCHakjoW.jpg'
+global.iconimg2 = botdata.icon2 || 'https://h.uguu.se/fCHakjoW.jpg'
 global.icono = pickRandom([global.iconimg1, global.iconimg2])
 
 global.rcanal = {
  contextInfo: {
              isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: "120363406177963567@newsletter",
+      newsletterJid: "120363419947391620@newsletter",
       serverMessageId: 100,
       newsletterName: name,
    }, 
@@ -69,7 +69,7 @@ global.rcanal = {
     contextInfo: {
             isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: "120363406177963567@newsletter",
+      newsletterJid: "120363419947391620@newsletter",
       serverMessageId: 100,
       newsletterName: name,
     },
