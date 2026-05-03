@@ -32,7 +32,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     // Encabezado con Estilo de Caja
     let menu = `${saludar()} ${tag} ✨\n\n`;
     menu += `╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ⚡ *𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓 𝐌𝐄𝐍𝐔*\n`;
+    menu += `┃  ⚡ *Chelzzy Bot 🤍*\n`;
     menu += `┃  👤 *Usuario:* ${tag}\n`;
     menu += `┃  📈 *Nivel:* ${level}\n`;
     menu += `┃  ✨ *Exp:* ${exp - min}/${xp}\n`;
@@ -74,8 +74,8 @@ const handler = async (m, { conn, usedPrefix }) => {
     }
 
     menu += `\n╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ✨ *𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓 𝐒𝐘𝐒𝐓𝐄𝐌*\n`;
-    menu += `┃  🛠️ *By Keistop Developers*\n`;
+    menu += `┃  ✨ *Chelzzy Bot 🤍*\n`;
+    menu += `┃  🛠️ *By Whois Developers*\n`;
     menu += `┃  ⚡ *Power & Speed*\n`;
     menu += `╰╾━━━━╼ 〔 🚀 〕 ╾━━━━╼╯`;
 
