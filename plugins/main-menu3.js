@@ -17,7 +17,7 @@ const handler = async (m, { isPrems, conn }) => {
     const img = readFileSync(join(process.cwd(), 'storage', 'img', 'catalogo.png'));
 
     const texto = `
-🎨💎 *𝕄𝔼ℕ𝕌́ 𝔻𝔼 𝔻𝕀𝕊𝔼ℕ̃𝕆𝕊 - 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'* 💎🎨
+🎨💎 *𝕄𝔼ℕ𝕌́ 𝔻𝔼 𝔻𝕀𝕊𝔼ℕ̃𝕆𝕊'* 💎🎨
 ––––––––––––––––––––––––––––––––––––––
 
 _¡Crea logos increíbles con un solo comando!_
