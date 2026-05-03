@@ -1,86 +1,44 @@
-//Code de pinterest
+//código de ytmp3
 // code creador por barboza 
 // Se te agradece que dejes mis créditos gracias disfruta el código
 
-import axios from "axios";
-import baileys from "@whiskeysockets/baileys";
+import axios from "axios"
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat, `*¡Hola!* ¿Qué imágenes buscas?\n\n*Ejemplo:* ${usedPrefix}${command} Messi`, m);
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) return conn.reply(m.chat, `*¡Hola!* Ingresa el enlace de YouTube.\n\n*Ejemplo:* ${usedPrefix}${command} https://youtu.be/5M_n2UCe7DQ`, m)
 
-  await conn.sendMessage(m.chat, { react: { text: "🔍", key: m.key } });
+    await m.react('⏳')
 
-  try {
-    const apiUrl = `https://api.delirius.store/search/pinterest?text=${encodeURIComponent(text)}`;
-    const { data } = await axios.get(apiUrl);
+    try {
+        const { data } = await axios.get(`https://api.delirius.store/download/ytmp3?url=${text}`)
 
-    if (!data.status || !data.results || data.results.length === 0) {
-      await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } });
-      return m.reply("No se encontraron imágenes.");
+        if (!data.status || !data.data) throw new Error()
+
+        const { title, author, image, download } = data.data
+
+        const info = `*〔 YOUTUBE MP3 〕*\n\n*Título:* ${title}\n*Canal:* ${author}\n\n_Enviando audio..._`
+
+        await conn.sendMessage(m.chat, { 
+            image: { url: image }, 
+            caption: info 
+        }, { quoted: m })
+
+        await conn.sendMessage(m.chat, { 
+            audio: { url: download }, 
+            mimetype: 'audio/mpeg', 
+            fileName: `${title}.mp3` 
+        }, { quoted: m })
+
+        await m.react('✅')
+
+    } catch (e) {
+        await m.react('❌')
+        await conn.reply(m.chat, `⚠️ No se pudo procesar la descarga.`, m)
     }
-
-
-    const limitedResults = data.results.slice(0, 6);
-
-    const medias = limitedResults.map((url) => ({
-      type: "image",
-      data: { url: url } 
-    }));
-
-    const albumCaption = `*〔 PINTEREST ALBUM 〕*\n\n*Búsqueda:* ${text}\n*By: Barboza Developer*`;
-
-    await sendAlbumMessage(conn, m.chat, medias, { 
-      caption: albumCaption, 
-      quoted: m,
-      delay: 1000 
-    });
-
-    await conn.sendMessage(m.chat, { react: { text: "✅", key: m.key } });
-
-  } catch (error) {
-    await conn.sendMessage(m.chat, { react: { text: "⚠️", key: m.key } });
-    m.reply("Ocurrió un error al procesar la búsqueda.");
-  }
-};
-
-async function sendAlbumMessage(conn, jid, medias, options = {}) {
-  const { delay = 500, caption = "", quoted = null } = options;
-
-  const album = baileys.generateWAMessageFromContent(jid, {
-    messageContextInfo: {},
-    albumMessage: {
-      expectedImageCount: medias.filter(m => m.type === "image").length,
-      expectedVideoCount: medias.filter(m => m.type === "video").length,
-      contextInfo: quoted ? {
-        remoteJid: quoted.key.remoteJid,
-        fromMe: quoted.key.fromMe,
-        stanzaId: quoted.key.id,
-        participant: quoted.key.participant || quoted.key.remoteJid,
-        quotedMessage: quoted.message,
-      } : {}
-    }
-  }, {});
-
-  await conn.relayMessage(jid, album.message, { messageId: album.key.id });
-
-  for (let i = 0; i < medias.length; i++) {
-    const { type, data } = medias[i];
-    const msg = await baileys.generateWAMessage(jid, {
-      [type]: data,
-      ...(i === 0 ? { caption } : {})
-    }, { upload: conn.waUploadToServer });
-
-    msg.message.messageContextInfo = {
-      messageAssociation: { associationType: 1, parentMessageKey: album.key }
-    };
-
-    await conn.relayMessage(jid, msg.message, { messageId: msg.key.id });
-    await new Promise(resolve => setTimeout(resolve, delay));
-  }
 }
 
-handler.help = ["pinterest <texto>"];
-handler.tags = ["search"];
-handler.command = /^(pinterest|pin)$/i;
+handler.help = ['ytmp3']
+handler.tags = ['descargas']
+handler.command = ['ytmp3', 'audio']
 
-export default handler;
+export default handler
