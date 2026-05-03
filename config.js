@@ -9,9 +9,9 @@ import axios from 'axios'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
   global.owner = [
-  [ '573204116340', 'creador', true ],
-  [ '5804226480049', 'ayudante', true ],
-  [ '573103274867', 'owne', true ],
+  [ '51936994165', 'Whois', true ],
+  [ '573042479614', 'Thali', true ],
+  [ '51993800613', 'Mel', true ],
 
   ]
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
@@ -21,19 +21,19 @@ global.prems = []
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = `[ 𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓 👾 ]`
-global.author = '𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓'
-global.stickpack = '𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓 👾'
-global.stickauth = '𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓'
-global.wm = '𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓'
-global.dev = '© 𝙋𝙤𝙬𝙚𝙧𝙚𝙙 𝘽𝙮 𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝘽𝙊𝙏'
-global.wait = '🌪️ *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ, sᴏʏ ʟᴇɴᴛᴏ... ฅ^•ﻌ•^ฅ\n\n> 𝙋𝙤𝙬𝙚𝙧𝙚𝙙 𝘽𝙮 𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓 👾 🌪️*'
-global.botname = '[ 𝐊𝐄𝐈 𝐁𝐎𝐓 👾 ]'
-global.textbot = `𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝐁𝐎𝐓`
-global.dev = '• 𝙋𝙤𝙬𝙚𝙧𝙚𝙙 𝘽𝙮 𝐊𝐄𝐈𝐒𝐓𝐎𝐏  𝘽𝙊𝙏'
+global.packname = `[ Chelzzy Bot 🤍 ]`
+global.author = 'Chelzzy Bot'
+global.stickpack = 'Chelzzy Bot 🤍'
+global.stickauth = 'Chelzzy Bot 🤍'
+global.wm = 'Chelzzy Bot'
+global.dev = '© Developer Whois'
+global.wait = '🌪️ *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ, sᴏʏ ʟᴇɴᴛᴏ... ฅ^•ﻌ•^ฅ\n\n> 𝙋𝙤𝙬𝙚𝙧𝙚𝙙 𝘽𝙮 Chelzzy Bot 🤍🌪️*'
+global.botname = '[ Chelzzy Bot 🤍 ]'
+global.textbot = `Chelzzy Bot`
+global.dev = '• Chelzzy Bot 🤍'
 global.listo = '*Aquí tiene ฅ^•ﻌ•^ฅ*'
-global.namechannel = '𝐊𝐄𝐈𝐒𝐓𝐎𝐏 𝐁𝐎𝐓 👾'
-global.channel = 'https://whatsapp.com/channel/0029VbC5dkNG3R3dlVy9YZ3Z'
+global.namechannel = 'Chelzzy Bot 🤍'
+global.channel = 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -42,9 +42,9 @@ global.miniurl = fs.readFileSync('./storage/img/miniurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.group = 'https://chat.whatsapp.com/Js6E0ZkSjJICm9NJ9lYjId'
-global.canal = 'https://whatsapp.com/channel/0029VbBy3XP8PgsHLKDgI72k'
-global.insta = 'https://www.insta.com/https://www.insta.com/sebastian_barboza13'
+global.group = 'https://chat.whatsapp.com/Fi6FHZ8VSGnAT7CKJkcd9r?mode=wwc'
+global.canal = 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m'
+global.insta = 'https://www.insta.com/https://www.insta.com/whois.yallico'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -52,7 +52,7 @@ global.catalogo = fs.readFileSync('./storage/img/catalogo.png');
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: packname, orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
 global.ch = {
-ch1: '120363405231702659@newsletter'
+ch1: '120363419947391620@newsletter'
 }
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
