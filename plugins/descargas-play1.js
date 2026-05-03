@@ -1,77 +1,67 @@
+// code creador por barboza 
+// Se te agradece que dejes mis créditos gracias disfruta el código
+
 import fetch from "node-fetch"
 import yts from 'yt-search'
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) return conn.reply(m.chat, `*Ingrese nombre o link*\n\n*Ejemplo:* ${usedPrefix}${command} Yan Block 444`, m)
+
+    const isVideo = command === 'play2'
+    await m.react(isVideo ? '🎥' : '🎧')
+
     try {
-        if (!text.trim()) return conn.reply(m.chat, `✨ *¡Ups! Ingresa el nombre o link de YouTube.* \n\n> *Ejemplo:* ${usedPrefix + command} Yan Block - 444`, m)
+        let videoUrl = text
+        let duration = ''
 
-        await m.react('🔍')
+        if (!text.match(/youtu/gi)) {
+            const search = await yts(text)
+            if (!search.all.length) {
+                await m.react('❌')
+                return m.reply('❌ Sin resultados')
+            }
+            videoUrl = search.videos[0].url
+            duration = search.videos[0].timestamp
+        }
 
-        // Busqueda en YouTube
-        const search = await yts(text)
-        const result = search.all[0]
-        if (!result) throw '❌ No se encontraron resultados para tu búsqueda.'
-
-        const { title, thumbnail, timestamp, views, url, author } = result
-
-        // --- INFO DEL VIDEO ---
-        const info = `╔══🎬 *YOUTUBE DOWNLOADER* 🎬══╗\n` +
-                     `║ \n` +
-                     `║ 📌 *Título:* ${title}\n` +
-                     `║ 👤 *Canal:* ${author.name}\n` +
-                     `║ ⏳ *Duración:* ${timestamp}\n` +
-                     `║ 👁️ *Vistas:* ${views.toLocaleString()}\n` +
-                     `║ 🔗 *Link:* ${url}\n` +
-                     `║ \n` +
-                     `╚═════════════════════╝\n\n` +
-                     `> 🚀 *Enviando archivo de Delirius API...*`
-
-        await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: info }, { quoted: m })
-
-        // Determinar si es audio o video
-        const isAudio = /^(play|yta|ytmp3|playaudio)$/i.test(command)
+        const endpoint = isVideo ? 'ytmp4' : 'ytmp3'
+        const apiUrl = `https://api.delirius.store/download/${endpoint}?url=${encodeURIComponent(videoUrl)}${isVideo ? '&format=360p' : ''}`
         
-        // Configuración de la URL de la API de Delirius
-        // ytmp3 para audio, ytmp4 para video
-        const type = isAudio ? 'ytmp3' : 'ytmp4'
-        const apiUrl = `https://api.delirius.store/download/${type}?url=${encodeURIComponent(url)}`
-
         const res = await fetch(apiUrl)
         const json = await res.json()
 
-        if (!json.status || !json.data?.download) {
-            throw '🤯 El servidor de Delirius no respondió correctamente o el link es inválido.'
+        if (!json.status || !json.data) {
+            await m.react('❌')
+            return m.reply('⚠️ Error API')
         }
 
-        const downloadUrl = json.data.download
+        const { title, author, image, download } = json.data
 
-        if (isAudio) {
-            // Enviar como Audio/Mensaje de voz
+        let info = `📌 *${title}*\n👤 *${author}*\n⏱️ *${duration}*\n📦 *${isVideo ? 'MP4' : 'MP3'}*\n\n*By: Barboza Developer*`
+
+        if (isVideo) {
             await conn.sendMessage(m.chat, { 
-                audio: { url: downloadUrl }, 
-                fileName: `${title}.mp3`, 
-                mimetype: 'audio/mpeg' 
+                video: { url: download }, 
+                caption: info,
+                mimetype: 'video/mp4'
             }, { quoted: m })
         } else {
-            // Enviar como Video
+            await conn.sendMessage(m.chat, { image: { url: image }, caption: info }, { quoted: m })
             await conn.sendMessage(m.chat, { 
-                video: { url: downloadUrl }, 
-                caption: `✅ *Aquí tienes:* ${title}`,
-                fileName: `${title}.mp4`,
-                mimetype: 'video/mp4'
+                audio: { url: download }, 
+                mimetype: 'audio/mpeg',
+                fileName: `${title}.mp3`
             }, { quoted: m })
         }
 
         await m.react('✅')
 
     } catch (e) {
-        console.error(e)
         await m.react('❌')
-        return conn.reply(m.chat, `⚠️ *ERROR* ⚠️\n\n> _Motivo: ${e.message || e}_`, m)
+        conn.reply(m.chat, '🛑 Error', m)
     }
 }
 
-handler.command = /^(play|yta|ytmp3|play2|ytv|ytmp4|playaudio|mp4)$/i
-handler.group = false
+handler.command = ['play', 'play2']
 
 export default handler
