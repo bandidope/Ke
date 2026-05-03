@@ -1,66 +1,73 @@
+/**
+ * 📂 COMANDO: Spotify Pro
+ * 📝 DESCRIPCIÓN: Descarga música de Spotify (Search & DL).
+ * 👤 CREADOR: Barboza Developer
+ * ⚡ CANAL: Barboza Developer x Zona Developers
+ * 🔌 API: https://api.evogb.org
+ */
+
 import axios from 'axios'
 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw `_*[ ⚠️ ] 𝐊𝐄𝐈𝐒𝐓𝐎𝐏' 𝐁𝐎𝐓 - Ingresa el nombre de la canción*_\n\n_Ejemplo:_\n${usedPrefix + command} Twice What is Love?`
+var handler = async (m, { conn, text, usedPrefix, command }) => {
+    let query = text ? text.trim() : (m.quoted?.text || null)
+    if (!query) return conn.reply(m.chat, `✨ *Ingresa el nombre de la canción*\n\n> *Ejemplo:* ${usedPrefix + command} Provenza`, m)
 
-    try { 
-        // 1. FASE DE BÚSQUEDA (SEARCH)
-        // Buscamos el término para obtener la URL de Spotify
-        const searchRes = await axios.get(`https://api.delirius.store/search/spotify?q=${encodeURIComponent(text)}&limit=1`)
-        const searchData = searchRes.data
+    await m.react('⏳')
 
-        if (!searchData.status || !searchData.data || searchData.data.length === 0) {
-            throw `_*[ ⚠️ ] No se encontraron resultados para: "${text}"*_`
-        }
+    try {
+        const _0x4a1b = 'ZWt1c2Fz' 
+        const key = Buffer.from(_0x4a1b, 'base64').toString('utf-8').split('').reverse().join('')
 
-        // Extraemos la URL del primer resultado del array 'data'
-        const trackUrl = searchData.data[0].url
-
-        // 2. FASE DE DESCARGA (DOWNLOAD)
-        // Usamos la URL para obtener el enlace directo al MP3
-        const downloadRes = await axios.get(`https://api.delirius.store/download/spotify?url=${encodeURIComponent(trackUrl)}`)
-        const dlData = downloadRes.data
-
-        if (!dlData.status || !dlData.data) {
-            throw `_*[ ❌ ] Error al procesar la descarga con Delirius API.*_`
-        }
-
-        // Accedemos a la data final del objeto de descarga
-        const res = dlData.data
+        const searchRes = await axios.get(`https://api.evogb.org/search/spotify?query=${encodeURIComponent(query)}&key=${key}`)
         
-        const info = `
-𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾
-﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘
-⧁ 𝙏𝙄𝙏𝙐𝙇𝙊
-» ${res.title}
-﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘
-⧁ 𝘼𝙍𝙏𝙄𝙎𝙏𝘼
-» ${res.author}
-﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘﹘
-⧁ 𝙀𝙉𝙇𝘼𝘾𝙀
-» ${trackUrl}
+        if (!searchRes.data.status || !searchRes.data.result.length) {
+            await m.react('❌')
+            return m.reply('⚠️ *No se encontraron resultados.*')
+        }
 
-_*🎶 𝐊𝐄𝐈𝐒𝐓𝐎𝐏' 𝐁𝐎𝐓 está enviando tu audio...*_`.trim()
+        const track = searchRes.data.result[0]
+        const trackUrl = `https://open.spotify.com/track/${track.id}`
+        
+        const dlRes = await axios.get(`https://api.evogb.org/dl/spotify?url=${encodeURIComponent(trackUrl)}&key=${key}`)
+        
+        if (!dlRes.data.status) {
+            await m.react('❌')
+            return m.reply('⚠️ *Error al obtener el audio.*')
+        }
 
-        // Enviamos la imagen de la portada con la info
-        await conn.sendFile(m.chat, res.image, 'thumbnail.jpg', info, m)
+        const data = dlRes.data.data
+        let ui = `┏━━━━━━━━━━━━━━━━┓\n`
+        ui += `┃   🎵 *SPOTIFY DL* ┃\n`
+        ui += `┗━━━━━━━━━━━━━━━━┛\n\n`
+        ui += `🎵 *TÍTULO:* ${data.name}\n`
+        ui += `👤 *ARTISTA:* ${data.artist}\n`
+        ui += `💿 *ALBUM:* ${data.album}\n`
+        ui += `⏱️ *DURACIÓN:* ${data.duration}\n\n`
+        ui += `━━━━━━━━━━━━━━━━━━━━\n`
+        ui += `⚡ *By: Barboza Developer*\n`
+        ui += `🌐 *Zona Developers*`
 
-        // Enviamos el archivo de audio (MP3)
         await conn.sendMessage(m.chat, { 
-            audio: { url: res.download }, 
-            fileName: `${res.title}.mp3`, 
-            mimetype: 'audio/mpeg' 
+            image: { url: data.imageHD || data.image }, 
+            caption: ui 
         }, { quoted: m })
 
+        await conn.sendMessage(m.chat, { 
+            audio: { url: data.url }, 
+            mimetype: 'audio/mpeg', 
+            fileName: `${data.name}.mp3` 
+        }, { quoted: m })
+
+        await m.react('✅')
+
     } catch (e) {
-        console.error(e)
-        let errorMsg = e.message || 'Error en la API'
-        await conn.reply(m.chat, `❌ _*Ocurrió un error:*_\n${errorMsg}`, m)
+        await m.react('❌')
+        m.reply('⚠️ *Error en el proceso.*')
     }
 }
 
-handler.help = ['spotify']
+handler.help = ['spotify', 'spotify2']
 handler.tags = ['descargas']
-handler.command = ['spoti', 'spotify', 'play2']
+handler.command = /^(spotify|spotdl|spotifydl)$/i
 
 export default handler
