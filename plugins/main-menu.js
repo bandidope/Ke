@@ -20,7 +20,7 @@ const saludar = () => {
 const handler = async (m, { conn, usedPrefix }) => {
   try {
     // Definir la ruta de la imagen local y leerla como Buffer
-    const img = readFileSync(join(process.cwd(), 'storage', 'img', 'catalogo.png'));
+    const img = readFileSync(join(process.cwd(), 'storage', 'img', 'whois.png'));
 
     const user = global.db.data.users[m.sender] || { level: 0, exp: 0, limit: 10 };
     const { exp, level, limit } = user;
