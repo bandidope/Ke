@@ -4,11 +4,11 @@ import axios from 'axios'
 
 let handler = async (m, { conn, args}) => {
   if (!args[0]) throw `
-╭━━━〔 ⚔️ *KEISTOP' VERSUS* ⚔️ 〕━━━┓
+╭━━━〔 ⚔️ *CHELZZY' VERSUS* ⚔️ 〕━━━┓
 ┃
 ┃ ⏳ *HORARIO:*
-┃ 🇲🇽 MÉXICO: 
-┃ 🇨🇴 COLOMBIA: 
+┃ 🇵🇪 PERÚ: 
+┃ 🇦🇷 ARGENTINA: 
 ┃
 ┃ 🎮 *MODALIDAD:*
 ┃ 👥 *JUGADORES:* 12 VS 12
@@ -25,9 +25,9 @@ let handler = async (m, { conn, args}) => {
 `
 
   const textos = [
-    "👾 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓: GUERRA TOTAL",
+    "👾 CHELZZY BOT: GUERRA TOTAL",
     "⚔️ MASACRE 12VS12 ACTIVADA",
-    "🚀 SYSTEM KEISTOP: CONFLICTO MASIVO"
+    "🚀 SYSTEM CHELZZY: CONFLICTO MASIVO"
   ]
   
   const imgOficial = "https://files.catbox.moe/hnlnna.jpg"
@@ -52,7 +52,7 @@ let handler = async (m, { conn, args}) => {
         itemCount: 2026,
         status: 1,
         message: titulo,
-        footerText: "𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾",
+        footerText: "CHELZZY BOT 👾",
         thumbnail: thumbBuffer,
         surface: 2,
         sellerJid: "0@s.whatsapp.net"
@@ -61,11 +61,11 @@ let handler = async (m, { conn, args}) => {
   }
 
   const caption = `
-┏━━━━〔 👾 *KEISTOP' 12 VS 12* 👾 〕━━━┓
+┏━━━━〔 👾 *CHELZZY' 12 VS 12* 👾 〕━━━┓
 ┃
 ┃ ⏳ *HORARIOS:*
-┃ 🇲🇽 MÉXICO: ${args[0]}
-┃ 🇨🇴 COLOMBIA: ${args[0]}
+┃ 🇵🇪 PERÚ ${args[0]}
+┃ 🇦🇷 ARGENTINA: ${args[0]}
 ┃
 ┃ 🎮 *MODALIDAD:*
 ┃ 👥 *JUGADORES:* 12 VS 12
@@ -87,10 +87,8 @@ let handler = async (m, { conn, args}) => {
 ┃ 🚀 *RESERVAS:*
 ┃    👾 •    👾 •    👾 • 
 ┃
-┃ 👾 *𝐁𝐲: 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓*
 ┗━━━━━━━━━━━━━━━━━━━━━━━┛
-
-📢 *Canal:* https://whatsapp.com/channel/0029Vb7aYAQJkK7F00EIzB1l`.trim()
+`.trim()
 
   await conn.sendMessage(m.chat, {
     image: { url: imgOficial },
