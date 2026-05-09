@@ -13,7 +13,7 @@ const clockString = ms => {
 const saludar = () => {
   const hora = new Date().getHours();
   if (hora >= 5 && hora < 12) return '🌅 ¡Buenos días!';
-  if (hora >= 12 && hora < 19) return '☀️ ¡Buenas tardes!';
+  if (hora >= 12 && hora < 7) return '☀️ ¡Buenas tardes!';
   return '🌙 ¡Buenas noches!';
 };
 
@@ -32,7 +32,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     // Encabezado con Estilo de Caja
     let menu = `${saludar()} ${tag} ✨\n\n`;
     menu += `╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ⚡ *Chelzzy Bot 🤍*\n`;
+    menu += `┃  ⚡ *Arceus Whois  ⚡*\n`;
     menu += `┃  👤 *Usuario:* ${tag}\n`;
     menu += `┃  📈 *Nivel:* ${level}\n`;
     menu += `┃  ✨ *Exp:* ${exp - min}/${xp}\n`;
@@ -74,7 +74,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     }
 
     menu += `\n╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ✨ *Chelzzy Bot 🤍*\n`;
+    menu += `┃  ✨ *Arceus Whois  ⚡*\n`;
     menu += `┃  🛠️ *By Whois Developers*\n`;
     menu += `┃  ⚡ *Power & Speed*\n`;
     menu += `╰╾━━━━╼ 〔 🚀 〕 ╾━━━━╼╯`;

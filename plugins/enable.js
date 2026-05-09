@@ -133,7 +133,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let scopeIcon = isAll ? '🌐 Global' : isUser ? '👤 Usuario' : '🏘️ Chat Actual';
 
     let confirm = `
-🪐 *––––  𝐊𝐄𝐈𝐒𝐓𝐎𝐏' 𝐂𝐎𝐑𝐄  ––––* 🪐
+🪐 *––––  *⚡ Arceus Whois  ⚡*  ––––* 🪐
 
    ┏━━━━━━━━━━━━━━━━━━━━┓
    ┃  ⚙️  *PANEL DE CONTROL*
@@ -144,7 +144,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
    ┗━━━━━━━━━━━━━━━━━━━━┛
 
    📡 _Sincronizando cambios en el sistema..._
-   *© 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 𝟐𝟎𝟐𝟔*`.trim()
+   *⚡ Arceus Whois  ⚡*`.trim()
 
   m.reply(confirm)
 }

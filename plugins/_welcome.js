@@ -54,7 +54,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       const welcomeText = customWelcome
         ? customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@desc/gi, groupDesc)
-        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n⚡ *Chelzzy Bot 🤍*`;
+        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n *⚡ Arceus Whois  ⚡*`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,

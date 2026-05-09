@@ -5,9 +5,9 @@ function handler(m, { groupMetadata }) {
     let a = ps.getRandom()
     
     let message = `
-╭──〔 👾 *𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓* 👾 〕──╮
+╭──〔 *⚡ Arceus Whois  ⚡* 〕──╮
 │
-│ 🤺 *ELECCIÓN DE SALA*
+│ 🤺 *Elección De Sala*
 │
 │ 👤 ${toM(a)}
 │

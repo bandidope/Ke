@@ -2,7 +2,7 @@ import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-const imagen1 = 'https://cdn-sunflareteam.vercel.app/images/fe2072569a.jpg';
+const imagen1 = 'https://o.uguu.se/MJVbgdQD.jpg';
 
 const loadMarriages = () => {
     if (fs.existsSync('./media/database/marry.json')) {

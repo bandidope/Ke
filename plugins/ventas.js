@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 let handler = async (m, { conn, args, command, usedPrefix }) => {
 if (!args[0]) throw `
-Owners / Vendedores Chelzzy 🫶🏻
+Owners / Vendedores Arceus 🫶🏻
 
 Owner:
 : ̗̀➛ 👑Whois : Wa.me/51936994155
@@ -20,9 +20,9 @@ Grupo Oficial:
                  
 ` 
 }
-handler.help = ['owner']
+handler.help = ['vendedores']
 handler.tags = ['owner']
-handler.command = /^(owner)$/i
+handler.command = /^(vendedores)$/i
 handler.group = true
 handler.admin = false
 export default handler

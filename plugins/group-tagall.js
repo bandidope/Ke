@@ -26,7 +26,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args }) 
 
     const getCountryFlag = (id) => {
       const num = id.split('@')[0];
-      if (num.startsWith('1')) return '🇺🇸';
+      if (num.startsWith('1')) return '⚡';
       const p2 = num.substring(0, 2);
       const p3 = num.substring(0, 3);
       return countryFlags[p3] || countryFlags[p2] || '👤';
@@ -47,7 +47,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args }) 
       messageText += `║ ${emoji} ${getCountryFlag(mem.id)} @${mem.id.split('@')[0]}\n`;
     }
 
-    messageText += `║\n╚══✦ Chelzzy Bot 👾✦══╝`;
+    messageText += `║\n╚══✦ *⚡ Arceus Whois  ⚡✦══╝`;
 
     // Miniatura para el mensaje (usando el buffer local)
     const fkontak = {
@@ -59,7 +59,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args }) 
       },
       message: {
         locationMessage: {
-          name: "Chelzzy Bot 👾",
+          name: "*⚡ Arceus Whois  ⚡",
           jpegThumbnail: localImg
         }
       }

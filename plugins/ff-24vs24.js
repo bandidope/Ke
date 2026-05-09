@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, args}) => {
   if (!args[0]) throw `
-╭─❍ *🔥 RETO 24 VS 24 | 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾*
+╭─❍ *🔥 RETO 24 VS 24 | Arceus'  Bot 👾*
 │
 │⏳ *Horario:*
 │🇲🇽 MÉXICO:
@@ -35,12 +35,12 @@ let handler = async (m, { conn, args}) => {
 `
 
   const encabezados = [
-    "🎖️ RETO CLAN VS CLAN | 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓",
+    "🎖️ RETO CLAN VS CLAN | Arceus'  Bot",
     "🔥 BATALLA TOTAL ACTIVADA",
     "⚡ ALIANZA MULTIESCUADRA EN PROGRESO"
   ]
   
-  const imgOficial = "https://files.catbox.moe/hnlnna.jpg"
+  const imgOficial = "https://o.uguu.se/MJVbgdQD.jpg"
   const titulo = encabezados[Math.floor(Math.random() * encabezados.length)]
 
   let thumbBuffer = Buffer.alloc(0)
@@ -62,7 +62,7 @@ let handler = async (m, { conn, args}) => {
         itemCount: 24,
         status: 1,
         message: titulo,
-        footerText: "𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾",
+        footerText: "Arceus'  Bot 👾",
         thumbnail: thumbBuffer,
         surface: 2,
         sellerJid: "0@s.whatsapp.net"
@@ -72,7 +72,7 @@ let handler = async (m, { conn, args}) => {
 
   await conn.sendMessage(m.chat, {
     image: { url: imgOficial },
-    caption: `╭─❍ *🔥 24 VS 24 | 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓*
+    caption: `╭─❍ *🔥 24 VS 24 | Arceus'  Bot*
 │
 │⏳ *Horario:*
 │🇲🇽 MÉXICO: ${args[0]}
@@ -102,7 +102,7 @@ let handler = async (m, { conn, args}) => {
 │🔄 *Suplentes:*
 │   🥷🏻 •    🥷🏻 • 
 │
-│👾 *𝐁𝐲: 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓*
+│👾 *𝐁𝐲: Arceus'  Bot*
 ╰────────────────────❍
 
 📢 *Canal:* https://whatsapp.com/channel/0029Vb7aYAQJkK7F00EIzB1l`,

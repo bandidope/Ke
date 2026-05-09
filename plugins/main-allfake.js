@@ -30,7 +30,7 @@ var handler = async function (m, conn, db) {
 
     // Obtener información del usuario
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let fotoperfil = await conn.profilePictureUrl(who, 'image').catch(() => 'https://h.uguu.se/fCHakjoW.jpg')
+    let fotoperfil = await conn.profilePictureUrl(who, 'image').catch(() => 'https://o.uguu.se/MJVbgdQD.jpg')
 
     // Obtener nacionalidad
     let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`)
@@ -51,8 +51,8 @@ var handler = async function (m, conn, db) {
         "120363419947391620@newsletter"
     ]
     let canalNombreM = [
-        "Chelzzy Bot 🤍",
-        "Chelzzy Bot 🤍"
+        "Arceus Whois  ⚡",
+        "Arceus Whois  ⚡"
     ]
 
     async function getRandomChannel() {
@@ -118,9 +118,9 @@ var handler = async function (m, conn, db) {
             externalAdReply: {
                 showAdAttribution: true,
                 title: "Texto del bot",
-                body: '🚀 Chelzzy Bot 👾',
+                body: '🚀 Arceus Whois  ⚡',
                 previewType: "PHOTO",
-                thumbnailUrl: "https://h.uguu.se/fCHakjoW.jpg",
+                thumbnailUrl: "https://o.uguu.se/MJVbgdQD.jpg",
                 sourceUrl: "https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m",
                 mediaType: 1,
                 renderLargerThumbnail: false

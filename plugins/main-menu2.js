@@ -9,7 +9,7 @@ const handler = async (m, { conn }) => {
     const texto = `
 *╭━━〔 🎵 CAJA MUSICAL 🎵 〕━━╮*
 *┃*
-*┃* ¡Chelzzy Bot 🤍!
+*┃* *⚡ Arceus Whois  ⚡*
 *┃* ➢ 🔔 𝘼𝙪𝙙𝙞𝙤𝙨 𝙀𝙭𝙘𝙡𝙪𝙨𝙞𝙫𝙤𝙨
 *┃*
 *┣━━〔 🎶 CATEGORÍAS 🎶 〕━━*

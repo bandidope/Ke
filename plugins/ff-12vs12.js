@@ -4,7 +4,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, args}) => {
   if (!args[0]) throw `
-╭━━━〔 ⚔️ *CHELZZY' VERSUS* ⚔️ 〕━━━┓
+╭━━━〔 ⚔️ *ARCEUS' VERSUS* ⚔️ 〕━━━┓
 ┃
 ┃ ⏳ *HORARIO:*
 ┃ 🇵🇪 PERÚ: 
@@ -25,12 +25,12 @@ let handler = async (m, { conn, args}) => {
 `
 
   const textos = [
-    "👾 CHELZZY BOT: GUERRA TOTAL",
+    "👾 Arceus Bot: GUERRA TOTAL",
     "⚔️ MASACRE 12VS12 ACTIVADA",
-    "🚀 SYSTEM CHELZZY: CONFLICTO MASIVO"
+    "🚀 SYSTEM Arceus: CONFLICTO MASIVO"
   ]
   
-  const imgOficial = "https://files.catbox.moe/hnlnna.jpg"
+  const imgOficial = "https://o.uguu.se/MJVbgdQD.jpg"
   const titulo = textos[Math.floor(Math.random() * textos.length)]
   
   let thumbBuffer
@@ -52,7 +52,7 @@ let handler = async (m, { conn, args}) => {
         itemCount: 2026,
         status: 1,
         message: titulo,
-        footerText: "CHELZZY BOT 👾",
+        footerText: "Arceus Bot 👾",
         thumbnail: thumbBuffer,
         surface: 2,
         sellerJid: "0@s.whatsapp.net"
@@ -61,7 +61,7 @@ let handler = async (m, { conn, args}) => {
   }
 
   const caption = `
-┏━━━━〔 👾 *CHELZZY' 12 VS 12* 👾 〕━━━┓
+┏━━━━〔 👾 *Arceus' 12 VS 12* 👾 〕━━━┓
 ┃
 ┃ ⏳ *HORARIOS:*
 ┃ 🇵🇪 PERÚ ${args[0]}

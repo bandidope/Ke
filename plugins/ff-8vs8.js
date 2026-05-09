@@ -3,7 +3,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, args}) => {
   if (!args[0]) throw `
-╭━━━〔 ⚔️ *KEISTOP' VERSUS* ⚔️ 〕━━━┓
+╭━━━〔 ⚔️ *ARCEUS' VERSUS* ⚔️ 〕━━━┓
 ┃
 ┃ ⏳ *HORARIO:*
 ┃ 🇲🇽 MÉXICO: 
@@ -32,13 +32,13 @@ let handler = async (m, { conn, args}) => {
 `
 
   const textos = [
-    "👾 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓: DOMINIO TOTAL",
+    "👾 Arceus'  Bot: DOMINIO TOTAL",
     "⚔️ DUELO DE TITANES ACTIVADO",
     "🚀 SYSTEM KEISTOP: CONFLICTO 8VS8"
   ]
   
   // Imagen oficial para todo el sistema
-  const imgOficial = "https://files.catbox.moe/hnlnna.jpg"
+  const imgOficial = "https://o.uguu.se/MJVbgdQD.jpg"
 
   const titulo = textos[Math.floor(Math.random() * textos.length)]
   
@@ -61,7 +61,7 @@ let handler = async (m, { conn, args}) => {
         itemCount: 2026,
         status: 1,
         message: titulo,
-        footerText: "𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾",
+        footerText: "Arceus'  Bot 👾",
         thumbnail: thumbBuffer,
         surface: 2,
         sellerJid: "0@s.whatsapp.net"
@@ -95,10 +95,10 @@ let handler = async (m, { conn, args}) => {
 ┃    👾 • 
 ┃    👾 • 
 ┃
-┃ 👾 *𝐁𝐲: 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓*
+┃ 👾 *𝐁𝐲: Arceus'  Bot*
 ┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-📢 *Canal:* https://whatsapp.com/channel/0029Vb7aYAQJkK7F00EIzB1l`.trim()
+📢 *Canal:* https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0ml`.trim()
 
   await conn.sendMessage(m.chat, {
     image: { url: imgOficial },

@@ -18,19 +18,19 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
         },
         message: {
             locationMessage: {
-                name: "Chelzzy Bot 🤍",
+                name: "*⚡ Arceus Whois  ⚡*",
                 jpegThumbnail: await (await fetch('https://files.catbox.moe/hnlnna.jpg')).buffer(),
                 vcard:
                     "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
-                    "N:;Chelzzy Bot 🤍;;;\n" +
-                    "FN:Chelzzy Bot 🤍\n" +
-                    "ORG: Chelzzy Bot 🤍\n" +
+                    "N:;*⚡ Arceus Whois  ⚡*;;;\n" +
+                    "FN:*⚡ Arceus Whois  ⚡*\n" +
+                    "ORG: *⚡ Arceus Whois  ⚡*\n" +
                     "TITLE:\n" +
                     "item1.TEL;waid=51936994155:+51 936 994 155\n" +
                     "item1.X-ABLabel:Whois\n" +
                     "X-WA-BIZ-DESCRIPTION:👾 Sistema de Gestión de Grupos.\n" +
-                    "X-WA-BIZ-NAME:Chelzzy Bot 🤍\n" +
+                    "X-WA-BIZ-NAME:*⚡ Arceus Whois  ⚡*\n" +
                     "END:VCARD"
             }
         },
@@ -39,7 +39,7 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 
     let chat = global.db.data.chats[m.chat]
     let usuario = `@${m.sender.split`@`[0]}`
-    let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://h.uguu.se/fCHakjoW.jpg'
+    let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://o.uguu.se/MJVbgdQD.jpg'
 
     let nombre = `✨ ${usuario} *ha cambiado el nombre del grupo* ✨\n\n> 📝 *Nuevo nombre:* _${m.messageStubParameters[0]}_`
     let foto = `📸 *¡Nueva foto de grupo!* 📸\n\n> 💫 Acción realizada por: ${usuario}`

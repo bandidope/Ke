@@ -26,13 +26,13 @@ let handler = async (m, { conn, args }) => {
 `
 
   const mensajes = [
-    "🔥 COMBATE PREPARADO | 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓",
+    "🔥 COMBATE PREPARADO | Arceus'  Bot",
     "⚡ RETO ACTIVO | ORGANIZACIÓN FF",
-    "💣 LLAMADO GRUPAL | 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓"
+    "💣 LLAMADO GRUPAL | Arceus'  Bot"
   ]
   
   // Imagen oficial para miniaturas
-  const imgOficial = "https://files.catbox.moe/hnlnna.jpg"
+  const imgOficial = "https://o.uguu.se/MJVbgdQD.jpg"
 
   const textoRandom = mensajes[Math.floor(Math.random() * mensajes.length)]
 
@@ -56,7 +56,7 @@ let handler = async (m, { conn, args }) => {
         itemCount: 6,
         status: 1,
         message: textoRandom,
-        footerText: "𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓 👾",
+        footerText: "Arceus'  Bot 👾",
         thumbnail: thumbBuffer,
         surface: 2,
         sellerJid: "0@s.whatsapp.net"
@@ -87,7 +87,7 @@ let handler = async (m, { conn, args }) => {
 │   🥷🏻 • 
 │   🥷🏻 • 
 │
-│👾 *𝐁𝐲: 𝐊𝐄𝐈𝐒𝐓𝐎𝐏'  𝐁𝐎𝐓*
+│👾 *𝐁𝐲: Arceus'  Bot*
 ╰─────────────────❍
 
 📢 *Canal:* https://whatsapp.com/channel/0029Vb7aYAQJkK7F00EIzB1l`,

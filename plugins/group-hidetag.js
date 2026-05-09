@@ -16,7 +16,7 @@ let handler = async (m, { conn, text, participants, isAdmin }) => {
         isForwarded: true,
         forwardingScore: 999,
         externalAdReply: {
-          title: 'Chelzzy ✅',
+          title: '*⚡ Arceus Whois  ⚡',
           body: 'Notificación Oficial del Grupo',
           thumbnailUrl: 'https://h.uguu.se/fCHakjoW.jpg',
           sourceUrl: 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m',
@@ -29,7 +29,7 @@ let handler = async (m, { conn, text, participants, isAdmin }) => {
     quoted: {
       key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' },
       message: { 
-        conversation: "Hola Soy Chelzzy Bot" 
+        conversation: "Hola Soy Arceus Whois ⚡" 
       }
     },
     userJid: conn.user.id 
