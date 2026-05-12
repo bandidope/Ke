@@ -1,35 +1,29 @@
-import util from 'util'
-import path from 'path'
-
-async function handler(m, { groupMetadata, command, conn, text, usedPrefix}) {
-
-let user = a => '@' + a.split('@')[0]
-if (!text) throw `*Ejemplo:*\n${usedPrefix + command} texto`
+let toM = a => '@' + a.split('@')[0]
+function handler(m, { groupMetadata }) {
 let ps = groupMetadata.participants.map(v => v.id)
 let a = ps.getRandom()
-let k = Math.floor(Math.random() * 70)
-let vn = `https://hansxd.nasihosting.com/sound/sound${k}.mp3`
-let top = `*\`[ 🥳 ＦＥＬＩＣＩＤＡＤＥＳ 🥳]\`*\n\n${user(a)} 🥳\nAcaba de ganar el sorteo felicitaciones 🎉`
-let txt = ''
-let count = 0
-for (const c of top) {
-await new Promise(resolve => setTimeout(resolve, 15))
-txt += c
-count++
+let b
+do b = ps.getRandom()
+while (b === a)
 
-if (count % 10 === 0) {
-conn.sendPresenceUpdate('composing' , m.chat);
-}
-}
-await conn.sendMessage(m.chat, { text: txt.trim(), mentions: conn.parseMention(txt) }, {quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100} )
+  let mensajes = [
+    `*${toM(a)} ¡Felicidades! Eres el ganador del sorteo.*\n*¡Disfruta de tu premio 🥳!*`,
+    `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo. ¡Bien hecho! 🎉*`,
+    `*${toM(a)} ¡La suerte te sonríe! Has sido seleccionado como el ganador del sorteo.*\n*¡Aprovecha al máximo tu premio! 🍨*`,
+    `*${toM(a)} ¡No te lo vas a creer! Eres el ganador del sorteo. ¡Parece que la suerte te ha sonreído!* 😯`,
+    `*${toM(a)} ¡Lo lograste! Eres el ganador del sorteo. ¡No te rindas, sigue participando y quién sabe, tal vez ganes de nuevo!* 😊`,
+    `*${toM(a)} ¡Ganaste! Eres el afortunado ganador del sorteo. 🏆*`,
+    `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo. ¡No te preocupes, no te vamos a pedir que devuelvas el premio! 🎊*`
 
+]
+
+  let mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+  m.reply(mensajeAleatorio, null, { mentions: [a, b] })
 }
+
 handler.help = ['sorteo']
-handler.command = ['sorteo']
 handler.tags = ['fun']
+handler.command = ['sorteo', 'sortear']
 handler.group = true
-
 export default handler
-
-function pickRandom(list) {
-return list[Math.floor(Math.random() * list.length)]}

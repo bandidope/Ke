@@ -2,7 +2,7 @@ import util from 'util'
 import path from 'path'
 let user = a => '@' + a.split('@')[0]
 function handler(m, { groupMetadata, command, conn, text, usedPrefix}) {
-if (!text) return m.reply(`Ejemplo de uso:\n.top *texto*`)
+if (!text) return conn.reply(m.chat, `*${xfun} Por favor, ingresa un texto.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Negros`, m)
 let ps = groupMetadata.participants.map(v => v.id)
 let a = ps.getRandom()
 let b = ps.getRandom()
@@ -15,7 +15,7 @@ let h = ps.getRandom()
 let i = ps.getRandom()
 let j = ps.getRandom()
 let k = Math.floor(Math.random() * 70);
-let x = `${pickRandom(['🤓','😅','😂','😳','😎', '🥵', '😱', '🤑', '🙄', '💩','🍑','🤨','🥴','🔥','👇🏻','😔', '👀','🌚','🗿'])}`
+let x = `${pickRandom(['🤓','😅','😂','😳','😎', '🥵', '😱', '🤑', '🙄', '💩','🍑','🤨','🥴','🔥','👇🏻','😔', '👀','🌚'])}`
 let l = Math.floor(Math.random() * x.length);
 let vn = `https://hansxd.nasihosting.com/sound/sound${k}.mp3`
 let top = `*${x} Top 10 ${text} ${x}*
@@ -32,7 +32,8 @@ let top = `*${x} Top 10 ${text} ${x}*
 *10. ${user(j)}*`
 m.reply(top, null, { mentions: [a, b, c, d, e, f, g, h, i, j]})
 }
-handler.help = handler.command = ['top']
+handler.help = ['top *<texto>*']
+handler.command = ['top']
 handler.tags = ['fun']
 handler.group = true
 export default handler
