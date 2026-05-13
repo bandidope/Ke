@@ -36,7 +36,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     menu += `┃  👤 *Usuario:* ${tag}\n`;
     menu += `┃  📈 *Nivel:* ${level}\n`;
     menu += `┃  ✨ *Exp:* ${exp - min}/${xp}\n`;
-    menu += `┃  💎 *Diamantes:* ${limit}\n`;
+    menu += `┃  💎 *Adquirir:* .comprar\n`;
     menu += `┃  ⏳ *Activo:* ${uptime}\n`;
     menu += `┃  👥 *Usuarios:* ${totalUsers}\n`;
     menu += `╰╾━━━━╼ 〔 🚀 〕 ╾━━━━╼╯\n`;
