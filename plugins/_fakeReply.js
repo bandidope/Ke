@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 export async function before(m, { conn }) {
-let name = `Chelzzy Bot `
+let name = `Arceus Bot ⚡`
 /* let imagenes = ["https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
@@ -11,8 +11,8 @@ let icono = imagenes[Math.floor(Math.random() * imagenes.length)]
 */
 
 let botdata = global.db.data.settings[conn.user.jid] || {}
-global.iconimg1 = botdata.icon1 || 'https://o.uguu.se/MJVbgdQD.jpg'
-global.iconimg2 = botdata.icon2 || 'https://o.uguu.se/MJVbgdQD.jpg'
+global.iconimg1 = botdata.icon1 || 'https://files.evogb.win/5bZ0HH.jpeg'
+global.iconimg2 = botdata.icon2 || 'https://files.evogb.win/5bZ0HH.jpeg'
 global.icono = pickRandom([global.iconimg1, global.iconimg2])
 
 global.rcanal = {
@@ -39,12 +39,12 @@ global.rcanal = {
 
 
 /* global.icono = [ 
-'https://qu.ax/yyCo.jpeg',
-'https://qu.ax/yyCo.jpeg',
-'https://qu.ax/qJch.jpeg',
-'https://qu.ax/qJch.jpeg',
-'https://qu.ax/CHRS.jpeg',
-'https://qu.ax/CHRS.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
+'https://files.evogb.win/5bZ0HH.jpeg',
 ].getRandom()
 */
 
