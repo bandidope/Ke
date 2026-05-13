@@ -23,6 +23,6 @@ Grupo Oficial:
 handler.help = ['vendedores']
 handler.tags = ['owner']
 handler.command = /^(vendedores)$/i
-handler.group = true
+handler.group = false
 handler.admin = false
 export default handler
