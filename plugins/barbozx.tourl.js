@@ -37,9 +37,9 @@ await m.react('✖️')
 await conn.reply(m.chat, `⚠︎ Se ha producido un problema.\n> Usa *${usedPrefix}report* para informarlo.\n\n${error.message}`, m)
 }}
 
-handler.help = ['tourl', 'catbox']
+handler.help = ['tourl', 'tourl2']
 handler.tags = ['tools']
-handler.command = ['tourl', 'catbox']
+handler.command = ['tourl', 'tourl2']
 
 export default handler
 
