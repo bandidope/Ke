@@ -18,8 +18,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
    conn.sendMessage(m.chat, { image: { url: img }, caption: grupos }, { quoted: fkontak });
 }
 
-handler.help = ['grupos']
+handler.help = ['gruposofc']
 handler.tags = ['info']
-handler.command = ['grupos', 'club']
+handler.command = ['gruposofc', 'club']
 
 export default handler
