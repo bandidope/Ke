@@ -17,11 +17,11 @@ export async function before(m, { conn, groupMetadata }) {
         participants: '0@s.whatsapp.net',
         remoteJid: 'status@broadcast',
         fromMe: false,
-        id: 'KeistopBot'
+        id: 'Arceus Whois ⚡'
       },
       message: {
         contactMessage: {
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:Chelzzy Bot 🤍\nitem1.TEL;waid=${
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:Arceus Bot ⚡\nitem1.TEL;waid=${
             conn.user.jid.split('@')[0]
           }:${conn.user.jid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
         }
