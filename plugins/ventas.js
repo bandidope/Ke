@@ -6,10 +6,10 @@ if (!args[0]) throw `
 Owners / Vendedores Arceus 🫶🏻
 
 Owner:
-: ̗̀➛ 👑Whois : Wa.me/51936994155
+: ̗̀➛ 👑 Whois : Wa.me/51936994155
 
 Vendedores:
-: ̗̀➛ 👸🏻Melisa : Wa.me/51993800613
+: ̗̀➛ 👸🏻 Melisa : Wa.me/51993800613
 : ̗̀➛ 👸🏻 Thali : Wa.me/+573042479614
 : ̗̀➛ 👸🏻 Elizabeth : Wa.me/51960831611
 : ̗̀➛ 👸🏻 TodoBenne' : Wa.me/56931300864
