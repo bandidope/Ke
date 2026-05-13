@@ -52,7 +52,7 @@ const handler = async (m, { conn, usedPrefix }) => {
       });
 
     const categoryIcons = {
-      internet: '🔹', musica: '🔹', downloader: '🔹', owner: '💻',
+      Comprar Bot: '⚡', internet: '🔹', musica: '🔹', downloader: '🔹', owner: '💻',
       admin: '🔹', otros: '🧩', econ: '🔹', tools: '🔹', audio: '🔹',
       descargas: '📥', search: '🔭', info: 'ℹ️', buscador: '🔹',
       búsquedas: '🔹', dl: '🔹', anime: '🏮', random: '🔹',
