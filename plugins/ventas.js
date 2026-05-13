@@ -20,9 +20,9 @@ Grupo Oficial:
                  
 ` 
 }
-handler.help = ['vendedores']
-handler.tags = ['owner']
-handler.command = /^(vendedores)$/i
+handler.help = ['comprar']
+handler.tags = ['Comprar Bot']
+handler.command = /^(comrar)$/i
 handler.group = false
 handler.admin = false
 export default handler
