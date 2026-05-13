@@ -21,8 +21,8 @@ Grupo Oficial:
 ` 
 }
 handler.help = ['comprar']
-handler.tags = ['Comprar Bot']
-handler.command = /^(comrar)$/i
+handler.tags = ['Arceus']
+handler.command = /^(comprar)$/i
 handler.group = false
 handler.admin = false
 export default handler
