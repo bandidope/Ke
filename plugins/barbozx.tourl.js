@@ -22,12 +22,12 @@ await conn.sendFile(m.chat, media, 'thumbnail.jpg', txt, fkontak)
 await m.react('✔️')
 break
 }
-case 'catbox': {
+case 'tourl2': {
 if (!mime) return conn.reply(m.chat, `❀ Por favor, responde a una *Imagen* o *Vídeo.*`, m)
 await m.react('🕒')
 const media = await q.download()
 const isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
-const link = await catbox(media)
+const link = await tourl2(media)
 const txt = `*乂 C A T B O X - U P L O A D E R 乂*\n\n*» Enlace* : ${link}\n*» Tamaño* : ${formatBytes(media.length)}\n*» Expiración* : ${isTele ? 'No expira' : 'Desconocido'}\n\n> *${dev}*`
 await conn.sendFile(m.chat, media, 'thumbnail.jpg', txt, fkontak)
 await m.react('✔️')
@@ -53,7 +53,7 @@ async function shortUrl(url) {
 const res = await fetch(`https://tinyurl.com/api-create.php?url=${url}`)
 return await res.text()
 }
-async function catbox(content) {
+async function tourl2(content) {
 const { ext, mime } = (await fileTypeFromBuffer(content)) || {}
 const blob = new Blob([content.toArrayBuffer()], { type: mime })
 const formData = new FormData()
