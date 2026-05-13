@@ -52,7 +52,7 @@ const handler = async (m, { conn, usedPrefix }) => {
       });
 
     const categoryIcons = {
-      Comprar Bot: '⚡', internet: '🔹', musica: '🔹', downloader: '🔹', owner: '💻',
+      Arceus: '⚡', internet: '🔹', musica: '🔹', downloader: '🔹', owner: '💻',
       admin: '🔹', otros: '🧩', econ: '🔹', tools: '🔹', audio: '🔹',
       descargas: '📥', search: '🔭', info: 'ℹ️', buscador: '🔹',
       búsquedas: '🔹', dl: '🔹', anime: '🏮', random: '🔹',
@@ -65,7 +65,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     };
 
     for (const [title, cmds] of Object.entries(categorizedCommands)) {
-      const icon = categoryIcons[title.toLowerCase()] || '🔹';
+      const icon = categoryIcons[title.toLowerCase()] || '⚡';
       menu += `\n╭╾━━╼ 〔 ${icon} *${title.toUpperCase()}* 〕\n`;
       cmds.forEach(cmd => {
         menu += `┃  ⚡ ${usedPrefix}${cmd}\n`;
