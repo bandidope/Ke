@@ -1,46 +1,21 @@
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-
-let handler = async (m, { conn, text, participants, isAdmin }) => {
-  if (!isAdmin) return m.reply('🚫 Este comando solo puede usarlo un administrador del grupo.')
-
-  let users = participants.map(u => conn.decodeJid(u.id))
-  let q = m.quoted ? m.quoted : m
-  let contenido = text || q.text || '📢 ¡Atención a todos!'
-
-  // Generamos el mensaje con la estructura de Business Verificado para kei
-  const msg = await generateWAMessageFromContent(m.chat, {
-    extendedTextMessage: {
-      text: contenido,
-      contextInfo: {
-        mentionedJid: users,
-        isForwarded: true,
-        forwardingScore: 999,
-        externalAdReply: {
-          title: '*⚡ Arceus Whois  ⚡',
-          body: 'Notificación Oficial del Grupo',
-          thumbnailUrl: 'https://h.uguu.se/fCHakjoW.jpg',
-          sourceUrl: 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m',
-          mediaType: 1,
-          renderLargerThumbnail: false 
-        }
-      }
+let handler = async (m, { conn, text, participants }) => {
+  const mime = m.mtype
+  const type = /imageMessage|videoMessage|conversation|extendedTextMessage/.test(mime)
+  if (!m.quoted && type) {
+    if ((mime === 'imageMessage')) {
+      conn.sendMessage(m.chat, { image: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), caption: text ? text : "", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m });
+    } else if ((mime === 'videoMessage')) {
+      conn.sendMessage(m.chat, { video: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), mimetype: 'video/mp4', caption: text ? text : "" }, { quoted: m })
+    } else if ((mime === ("conversation") || ("extendedTextMessage"))) {
+      conn.sendMessage(m.chat, { text: text ? text : "Pᴏʀɴʜᴜʙ: @whoís.yallico", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
     }
-  }, { 
-    quoted: {
-      key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' },
-      message: { 
-        conversation: "Hola Soy Arceus Whois ⚡" 
-      }
-    },
-    userJid: conn.user.id 
-  })
-
-  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+  } else if (m.quoted) {
+    await conn.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
+  }
 }
-
-handler.help = ['hidetag']
-handler.tags = ['group']
-handler.command = ['hidetag', 'notify', 'n', 'noti']
+handler.help = ['notify', 'hidetag']
+handler.tags = ['grupo']
+handler.command = ['hidetag', 'notify', 'n', 'noti', 'notificar', 'notif', 'aviso', 'avisar',]
 handler.group = true
 handler.admin = true
 
