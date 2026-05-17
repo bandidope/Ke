@@ -37,7 +37,7 @@ async function uploadtelegraph(path) {
   try {
     const form = new FormData()
     form.append("files[]", fs.createReadStream(path))   
-    const res = await fetch("https://telegra.ph/upload.php", {
+    const res = await fetch("https://telegra.ph/upload", {
       method: "POST",
       headers: form.getHeaders(),
       body: form
