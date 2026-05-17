@@ -33,7 +33,7 @@ handler.tags = ["tools"]
 handler.command = /^(tourl2|tourl)$/i
 export default handler
 
-async function uploadtelegra(path) {
+async function uploadtelegraph(path) {
   try {
     const form = new FormData()
     form.append("files[]", fs.createReadStream(path))   
