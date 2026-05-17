@@ -20,7 +20,7 @@ let handler = async m => {
       await fs.promises.unlink(media)
       return
     }    
-    const { files } = await uploadUguu(media)
+    const { files } = await uploadtelegra(media)
     const caption = `\`\`\`[ ⚡ ] Aquí tienes la URL de tu archivo:\n${files[0]?.url}\`\`\``
     await m.reply(caption)
   } catch (e) {
@@ -33,11 +33,11 @@ handler.tags = ["tools"]
 handler.command = /^(tourl2|tourl)$/i
 export default handler
 
-async function uploadUguu(path) {
+async function uploadtelegra(path) {
   try {
     const form = new FormData()
     form.append("files[]", fs.createReadStream(path))   
-    const res = await fetch("https://uguu.se/upload.php", {
+    const res = await fetch("https://telegra.ph/upload.php", {
       method: "POST",
       headers: form.getHeaders(),
       body: form
