@@ -11,14 +11,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
     if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime) && (q.msg || q).seconds > 15) {
-        return m.reply(`⚡ *Lɪᴍɪᴛᴇ Exᴄᴇᴅɪᴅᴏ...*\n\nEl video es muy largo. Máximo 15 segundos para crear el sticker.`)
+      if (/video/g.test(mime) && (q.msg || q).seconds > 25) {
+        return m.reply(`⚡ *Lɪᴍɪᴛᴇ Exᴄᴇᴅɪᴅᴏ...*\n\nEl video es muy largo. Máximo 25 segundos para crear el sticker.`)
       }
 
       let img = await q.download?.()
       if (!img) {
         return conn.reply(m.chat,
-`╭─〔 ⚡ Chelzzy Bot 👾 〕─╮
+`╭─〔 ⚡ Arceus Bot 👾 〕─╮
 │
 │ ❌ *ERROR DE SISTEMA:*
 │    No se pudo procesar el sticker.
@@ -58,7 +58,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     } else {
       return conn.reply(m.chat,
-`╭─〔 👾 Chelzzy Bot 👾 〕─╮
+`╭─〔 👾 Arceus Bot 👾 〕─╮
 │
 │ ✨ *CREADOR DE STICKERS*
 │
