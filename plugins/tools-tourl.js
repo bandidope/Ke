@@ -20,7 +20,7 @@ let handler = async m => {
       await fs.promises.unlink(media)
       return
     }    
-    const { files } = await uploadtelegra(media)
+    const { files } = await uploadtelegraph(media)
     const caption = `\`\`\`[ ⚡ ] Aquí tienes la URL de tu archivo:\n${files[0]?.url}\`\`\``
     await m.reply(caption)
   } catch (e) {
