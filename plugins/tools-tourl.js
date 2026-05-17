@@ -1,69 +1,127 @@
-import fetch from "node-fetch";
-import crypto from "crypto";
-import { FormData, Blob } from "formdata-node";
-import { fileTypeFromBuffer } from "file-type";
-
-const handler = async (m, { conn }) => {
-let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || "";
-  if (!mime) return m.reply("⚡ *_Atención: Para continuar, es necesario que envíes una imagen, vídeo, audio o gif. Por favor, asegúrate de hacerlo antes de utilizar el comando nuevamente. ¡Gracias!_*", null, { quoted: fkontak });
-  let media = await q.download();
-let link = await catbox(media);
-  let caption = `🔗 *L I N K DE ACCESO :*
- \`\`\`• ${link}\`\`\`
-📊 *T A M A Ñ O DEL ARCHIVO :* ${formatBytes(media.length)}
-📅 *V A L I D E Z DEL ENLACE :* *"Sin fecha de caducidad"* 
-`;
-
-  await m.reply(caption);
-}
-handler.command = handler.help = ['tourl2']
-handler.tags = ['transformador']
-//handler.yenes = 5
-export default handler
-
+import axios from "axios"
+import FormData from "form-data"
 
 function formatBytes(bytes) {
-  if (bytes === 0) {
-    return "0 B";
-  }
-  const sizes = ["B", "KB", "MB", "GB", "TB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return `${(bytes / 1024 ** i).toFixed(2)} ${sizes[i]}`;
+  if (bytes === 0) return "0 B"
+  const sizes = ["B", "KB", "MB", "GB", "TB"]
+  const i = Math.floor(Math.log(bytes) / Math.log(1024))
+  return `${(bytes / 1024 ** i).toFixed(2)} ${sizes[i]}`
 }
 
+function generateUniqueFilename(mime) {
+  const ext = mime.split("/")[1] || "bin"
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  let id = Array.from({ length: 8 }, () => chars[Math.floor(Math.random() * chars.length)]).join("")
+  return `${id}.${ext}`
+}
 
-/**
- * Upload image to catbox
- * Supported mimetype:
- * - `image/jpeg`
- * - `image/jpg`
- * - `image/png`s
- * - `image/webp`
- * - `video/mp4`
- * - `video/gif`
- * - `audio/mpeg`
- * - `audio/opus`
- * - `audio/mpa`
- * @param {Buffer} buffer Image Buffer
- * @return {Promise<string>}
- */
-async function catbox(content) {
-  const { ext, mime } = (await fileTypeFromBuffer(content)) || {};
-  const blob = new Blob([content.toArrayBuffer()], { type: mime });
-  const formData = new FormData();
-  const randomBytes = crypto.randomBytes(5).toString("hex");
-  formData.append("reqtype", "fileupload");
-  formData.append("fileToUpload", blob, randomBytes + "." + ext);
+async function uploadCatbox(buffer, mime) {
+  const form = new FormData()
+  form.append("reqtype", "fileupload")
+  form.append("fileToUpload", buffer, { filename: generateUniqueFilename(mime) })
 
-  const response = await fetch("https://catbox.moe/user/api.php", {
-    method: "POST",
-    body: formData,
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-    },
-  });
+  const res = await axios.post("https://catbox.moe/user/api.php", form, {
+    headers: form.getHeaders(),
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
+  })
 
-  return await response.text();
+  if (typeof res.data !== "string" || !res.data.startsWith("https://")) {
+    throw new Error("Respuesta inválida de Catbox: " + JSON.stringify(res.data))
+  }
+  return res.data
+}
+
+async function uploadUguu(buffer) {
+  const form = new FormData()
+  form.append("files[]", buffer, generateUniqueFilename("image/jpeg"))
+
+  const res = await axios.post("https://uguu.se/upload.php", form, {
+    headers: form.getHeaders(),
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
+  })
+
+  const data = res.data
+  const url = data?.files?.[0]?.url
+  if (!url) throw new Error("Respuesta inválida de Uguu: " + JSON.stringify(data))
+  return url
+}
+
+async function uploadQuax(buffer, mime) {
+  const form = new FormData()
+  form.append("file", buffer, { filename: generateUniqueFilename(mime), contentType: mime })
+
+  const res = await axios.post("https://qu.ax/upload.php", form, {
+    headers: form.getHeaders(),
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
+  })
+
+  const data = res.data
+  if (!data?.files?.[0]?.url) throw new Error("Respuesta inválida de Quax: " + JSON.stringify(data))
+  return data.files[0].url
+}
+
+async function uploadAuto(buffer, mime) {
+  try {
+    return { link: await uploadCatbox(buffer, mime), server: "catbox" }
+  } catch {
+    try {
+      return { link: await uploadUguu(buffer), server: "uguu" }
+    } catch {
+      return { link: await uploadQuax(buffer, mime), server: "quax" }
+    }
+  }
+}
+
+export default {
+  command: ["tourl"],
+  category: "utils",
+    run: async (client, m, args, usedPrefix, command) => {
+    const q = m.quoted || m
+    const mime = (q.msg || q).mimetype || ""
+    if (!mime) {
+      return client.reply(
+        m.chat,
+        `💙 Responde a una imagen o video con *${usedPrefix + command}  [servidor]* para convertirlo en URL.\n\n` +
+        `Servidores disponibles:\n` +
+        `› catbox (permanente)\n` +
+        `› quax   (permanente)\n` +
+        `› uguu   (temporal, 24h)`,
+        m
+      )
+    }
+
+    try {
+      const media = await q.download()
+      if (!media) return m.reply("💙 No se pudo descargar el archivo.")
+
+      const serverArg = args[0]?.toLowerCase() || "auto"
+      let link, server
+
+      if (serverArg === "catbox") {
+        link = await uploadCatbox(media, mime)
+        server = "catbox"
+      } else if (serverArg === "uguu") {
+        link = await uploadUguu(media)
+        server = "uguu"
+      } else if (serverArg === "quax") {
+        link = await uploadQuax(media, mime)
+        server = "quax"
+      } else {
+        const autoRes = await uploadAuto(media, mime)
+        link = autoRes.link
+        server = autoRes.server
+      }
+
+      const userName = m.pushName || "Usuario"
+      const upload = `╭─「 📤 *UPLOAD* 」\n│ 💙 *Servidor ›* ${server.toUpperCase()}\n│ 💙 *Link ›* ${link}\n│ 🌱 *Peso ›* ${formatBytes(media.length)}\n│ 💙 *Tipo ›* ${mime.split("/")[1].toUpperCase() || "UNKNOWN"}\n│ 🌱 *Solicitado por ›* ${userName}\n╰────────────╯`
+
+      return m.reply(upload)
+    } catch (e) {
+      console.error(e)
+      await m.reply(`${e}`)
+    }
+  }
 }
