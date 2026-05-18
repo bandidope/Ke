@@ -18,7 +18,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let img = await q.download?.()
       if (!img) {
         return conn.reply(m.chat,
-`╭─〔 ⚡ Arceus Bot 👾 〕─╮
+`╭─〔 ⚡ 𝙼𝚌𝚀𝚞𝚎𝚎𝚗 𝙱𝚘𝚝 ⚡ 〕─╮
 │
 │ ❌ *ERROR DE SISTEMA:*
 │    No se pudo procesar el sticker.
@@ -58,7 +58,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     } else {
       return conn.reply(m.chat,
-`╭─〔 👾 Arceus Bot 👾 〕─╮
+`╭─〔 👾 𝙼𝚌𝚀𝚞𝚎𝚎𝚗 𝙱𝚘𝚝 ⚡ 〕─╮
 │
 │ ✨ *CREADOR DE STICKERS*
 │

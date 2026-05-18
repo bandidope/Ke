@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 let handler = async (m, { conn, args, command, usedPrefix }) => {
 if (!args[0]) throw `
-Owners / Vendedores Arceus 🫶🏻
+Owners / Vendedores McQueen ⚡ 
 
 Owner:
 : ̗̀➛ 👑 Whois : Wa.me/51936994155
