@@ -1,6 +1,6 @@
 
 
-╭───〔 👾 𝙏𝙝𝙚 𝙆𝙞𝙣𝙜's 𝘽𝙤𝙩 👾 〕───╮
+╭───〔 👾 McQueen Bot 👾 〕───╮
 │
 │ 🤖 *ESTADO DEL SISTEMA*
 │ Un bot diseñado para automatizar y
@@ -13,11 +13,10 @@
 │ 📡 Conexión Estable 24/7
 │
 │ 📌 *ENLACES OFICIALES:*
-│ 📢 [Canal de Actualizaciones](https://whatsapp.com/channel/0029VbC5dkNG3R3dlVy9YZ3Z)
-│ 📬 [Grupo de Soporte](https://chat.whatsapp.com/Js6E0ZkSjJICm9NJ9lYjId)
+│ 📢 [Canal de Actualizaciones]()
+│ 📬 [Grupo de Soporte]()
 │
 │ 👑 *CONTACTO OWNERS:*
-│ 🛡️ [Owner 1](https://wa.me/56944169535)
-│ 🛡️ [Owner 2](https://wa.me/56966352834)
+│ 🛡️ [Owner 1](https://wa.me/51936994155)
 │
-╰──────────⊰ 𝙏𝙝𝙚 𝙆𝙞𝙣𝙜'𝙨 𝘽𝙤𝙩 ⊱──────────╯
+╰──────────⊰ Whois Dev ⊱──────────╯
