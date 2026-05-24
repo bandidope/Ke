@@ -17,7 +17,7 @@ export async function before(m, { conn, groupMetadata }) {
         participants: '0@s.whatsapp.net',
         remoteJid: 'status@broadcast',
         fromMe: false,
-        id: 'Arceus Whois ⚡'
+        id: '𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡'
       },
       message: {
         contactMessage: {
@@ -54,7 +54,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       const welcomeText = customWelcome
         ? customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@desc/gi, groupDesc)
-        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n *⚡ Arceus Whois  ⚡*`;
+        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n *⚡ 𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁  ⚡*`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,

@@ -30,7 +30,7 @@ var handler = async function (m, conn, db) {
 
     // Obtener información del usuario
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let fotoperfil = await conn.profilePictureUrl(who, 'image').catch(() => 'https://o.uguu.se/MJVbgdQD.jpg')
+    let fotoperfil = await conn.profilePictureUrl(who, 'image').catch(() => 'https://raw.githubusercontent.com/JTxs00/uploads/main/1779612711587.jpeg')
 
     // Obtener nacionalidad
     let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`)
@@ -51,8 +51,8 @@ var handler = async function (m, conn, db) {
         "120363419947391620@newsletter"
     ]
     let canalNombreM = [
-        "Arceus Whois  ⚡",
-        "Arceus Whois  ⚡"
+        "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡",
+        "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡"
     ]
 
     async function getRandomChannel() {
@@ -118,9 +118,9 @@ var handler = async function (m, conn, db) {
             externalAdReply: {
                 showAdAttribution: true,
                 title: "Texto del bot",
-                body: '🚀 Arceus Whois  ⚡',
+                body: '🚀 𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡',
                 previewType: "PHOTO",
-                thumbnailUrl: "https://o.uguu.se/MJVbgdQD.jpg",
+                thumbnailUrl: "https://raw.githubusercontent.com/JTxs00/uploads/main/1779612711587.jpeg",
                 sourceUrl: "https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m",
                 mediaType: 1,
                 renderLargerThumbnail: false
