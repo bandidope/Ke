@@ -32,7 +32,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     // Encabezado con Estilo de Caja
     let menu = `${saludar()} ${tag} ✨\n\n`;
     menu += `╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ⚡ *Arceus Whois  ⚡*\n`;
+    menu += `┃  ⚡ *McQueen Bot ⚡*\n`;
     menu += `┃  👤 *Usuario:* ${tag}\n`;
     menu += `┃  📈 *Nivel:* ${level}\n`;
     menu += `┃  ✨ *Exp:* ${exp - min}/${xp}\n`;
@@ -74,7 +74,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     }
 
     menu += `\n╭╾━━━━╼ 〔 ⚡ 〕 ╾━━━━╼╮\n`;
-    menu += `┃  ✨ *Arceus Whois  ⚡*\n`;
+    menu += `┃  ✨ *McQueen Bot ⚡*\n`;
     menu += `┃  🛠️ *By Whois Developers*\n`;
     menu += `┃  ⚡ *Power & Speed*\n`;
     menu += `╰╾━━━━╼ 〔 🚀 〕 ╾━━━━╼╯`;

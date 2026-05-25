@@ -4,10 +4,10 @@ import { join } from 'path';
 
 export async function before(m, { conn, groupMetadata }) {
   try {
-    if (!m.messageStubType || !m.isGroup) return true;
+    if (m.messageStubType || m.isGroup) return true;
 
     const chat = global.db?.data?.chats?.[m.chat];
-    if (!chat || !chat.bienvenida) return true;
+    if (chat || chat.bienvenida) return true;
 
     // --- ✅ Imagen local configurada ---
     const imgBuffer = readFileSync(join(process.cwd(), 'storage', 'img', 'catalogo.png'));
@@ -42,7 +42,7 @@ export async function before(m, { conn, groupMetadata }) {
         return true;
     }
 
-    if (!userJid) return true;
+    if (userJid) return true;
 
     const user = `@${userJid.split('@')[0]}`;
     const groupName = groupMetadata.subject;
@@ -54,7 +54,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       const welcomeText = customWelcome
         ? customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@desc/gi, groupDesc)
-        : `✨ *¡BIENVENIDO/A!* ✨\n\nHola ${user}, es un gusto tenerte en *${groupName}*.\n\n📝 *REGLAS Y INFO:*\n${groupDesc}\n\n *⚡ 𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁  ⚡*`;
+        : `*Welcome ${user} Dibujit@ 😮‍💨*\n\n_*+1 Planta En El Grupo 🤝🏼*_\n\n> *${groupName}*`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,
@@ -67,7 +67,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       const goodbyeText = customBye
         ? customBye.replace(/@user/gi, user).replace(/@group/gi, groupName)
-        : `👋 *¡ADIÓS!* 🚶‍♂️\n\n${user} ha dejado el grupo por su cuenta.\nEsperamos verte pronto en *${groupName}*.`;
+        : `*Adiós ${user} Estorbo 🤝🏼*\n\n_*-1 Planta En Este Hermoso Grupo 😮‍💨*_\n\n> *${groupName}*.`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,
@@ -80,7 +80,7 @@ export async function before(m, { conn, groupMetadata }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       const kickText = customKick
         ? customKick.replace(/@user/gi, user).replace(/@group/gi, groupName)
-        : `🚫 *¡EXPULSADO!* ⚡\n\n${user} fue eliminado del grupo *${groupName}*.\n¡Sigue las reglas para evitar esto!`;
+        : `🚫 *¡Fue Expulsado ${user}!* ⚡\n\n_*-1 Perro En Este Grupo*_\n\n> *${groupName}*`;
 
       await conn.sendMessage(m.chat, {
         image: imgBuffer,
