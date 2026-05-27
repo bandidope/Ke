@@ -1,18 +1,47 @@
-let name = await conn.getName(who)
-let q = m.quoted ? m.quoted : m
-let mime = (q.msg || q).mimetype || ''
-if (!mime) throw `${mg} ${mid.smsconvert10}`
-let media = await q.download()
-let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
-let link = await (isTele ? uploadImage : uploadFile)(media)
-let caption = `🛑 ${mid.smsYT4}:\n${link}\n🥏 ${mid.smsconvert11}: ${media.length}\n🚀 ${mid.smsconvert12}: ${isTele ? '𝙉𝙊 𝙀𝙓𝙋𝙄𝙍𝘼' : '𝘿𝙀𝙎𝘾𝙊𝙉𝙊𝘾𝙄𝘿𝙊'}\n🔰 ${mid.smsconvert13}: ${await shortUrl(link)}`
-conn.reply(m.chat, caption, m, { contextInfo: {externalAdReply :{mediaUrl: md, mediaType: 2, title: wm, body: botdate, thumbnail: await(await fetch(link)).buffer(), sourceUrl: link }}})}
-handler.help = ['tourl']
-handler.tags = ['herramientas']
-handler.command = /^(tourl|upload)$/i
-export default handler
+import fs from 'fs'
+import FormData from 'form-data'
+import axios from 'axios'
+import fetch from 'node-fetch'
 
-async function shortUrl(url) {
-let res = await fetch(`https://tinyurl.com/api-create.php?url=${url}`)
-return await res.text()
+let handler = async (m, { conn }) => {
+
+  let q = m.quoted ? m.quoted : m
+  let mime = (q.msg || q).mimetype || ''
+
+  if (!mime.startsWith('image/')) {
+    return m.reply(`${emoji} Por favor, responda a una *Imagen.*`)
+  }
+  await m.react('🕓')
+
+  let media = await q.download()
+  let formData = new FormData()
+  formData.append('image', media, { filename: 'file' })
+
+  let api = await axios.post('https://api.imgbb.com/1/upload?key=10604ee79e478b08aba6de5005e6c798', formData, {
+    headers: {
+      ...formData.getHeaders()
+    }
+  })
+
+  if (api.data.data) {
+    let txt = `*乂  I B B  -  U P L O A D E R*\n\n`
+        txt += `  *» Titulo* : ${q.filename || 'x'}\n`
+        txt += `  *» Id* : ${api.data.data.id}\n`
+        txt += `  *» Enlace* : ${api.data.data.url}\n`
+        txt += `  *» Directo* : ${api.data.data.url_viewer}\n`
+        txt += `  *» Mime* : ${mime}\n`
+        txt += `  *» File* : ${q.filename || 'x.jpg'}\n`
+        txt += `  *» Extension* : ${api.data.data.image.extension}\n`
+        txt += `  *» Delete* : ${api.data.data.delete_url}\n\n`
+        txt += `> *${dev}*`
+    await conn.sendFile(m.chat, api.data.data.url, 'ibb.jpg', txt, m, fkontak)
+    await m.react('✅')
+  } else {
+    await m.react('✖️')
+  }
 }
+handler.tags = ['transformador']
+handler.help = ['ibb']
+handler.command = ['ibb', 'tourl3']
+handler.register = false
+export default handler
