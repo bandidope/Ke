@@ -7,39 +7,39 @@ import path from 'path'
 
 let handler = m => m
 handler.before = async function (m, { conn, participants, groupMetadata}) {
-    if (!m.messageStubType ||!m.isGroup) return
+    if (!m.messageStubType || !m.isGroup) return
 
     const fkontak = {
         key: {
             participants: "0@s.whatsapp.net",
             remoteJid: "status@broadcast",
             fromMe: false,
-            id: "AlienMenu"
-},
+            id: "McQueen Menu"
+        },
         message: {
             locationMessage: {
-                name: "*McQueen Bot MD 🌀*",
-                jpegThumbnail: await (await fetch('https://raw.githubusercontent.com/JTxs00/uploads/main/1779612711587.jpeg')).buffer(),
+                name: "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡",
+                jpegThumbnail: await (await fetch('https://cdn.adoolab.xyz/dl/985b1ed9.jpg
                 vcard:
                     "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
-                    "N:;Sasuke;;;\n" +
-                    "FN:Sasuke Bot\n" +
-                    "ORG:Barboza Developers\n" +
+                    "N:;𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁;;;\n" +
+                    "FN:𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁\n" +
+                    "ORG: 𝗠𝗰𝗤𝘂𝗲𝗲𝗻' 𝐂𝐨𝐦𝐮𝐧𝐢𝐭𝐲\n" +
                     "TITLE:\n" +
-                    "item1.TEL;waid=19709001746:+1 (970) 900-1746\n" +
-                    "item1.X-ABLabel:Alien\n" +
-                    "X-WA-BIZ-DESCRIPTION:🛸 Llamado grupal universal con estilo.\n" +
-                    "X-WA-BIZ-NAME:Sasuke\n" +
+                    "item1.TEL;waid=51936994155:+51 936 994 155\n" +
+                    "item1.X-ABLabel:Keistop\n" +
+                    "X-WA-BIZ-DESCRIPTION:👾 Sistema de Gestión de Grupos.\n" +
+                    "X-WA-BIZ-NAME:𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁\n" +
                     "END:VCARD"
-}
-},
+            }
+        },
         participant: "0@s.whatsapp.net"
-}
+    }
 
     let chat = global.db.data.chats[m.chat]
     let usuario = `@${m.sender.split`@`[0]}`
-    let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://raw.githubusercontent.com/JTxs00/uploads/main/1779612711587.jpeg'
+    let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://cdn.adoolab.xyz/dl/985b1ed9.jpg'
 
     let nombre = `✨ ${usuario} *ha cambiado el nombre del grupo* ✨\n\n> 📝 *Nuevo nombre:* _${m.messageStubParameters[0]}_`
     let foto = `📸 *¡Nueva foto de grupo!* 📸\n\n> 💫 Acción realizada por: ${usuario}`
@@ -51,25 +51,25 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 
     if (chat.detect && m.messageStubType == 21) {
         await this.sendMessage(m.chat, { text: nombre, mentions: [m.sender]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 22) {
+    } else if (chat.detect && m.messageStubType == 22) {
         await this.sendMessage(m.chat, { image: { url: pp}, caption: foto, mentions: [m.sender]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 23) {
+    } else if (chat.detect && m.messageStubType == 23) {
         await this.sendMessage(m.chat, { text: newlink, mentions: [m.sender]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 25) {
+    } else if (chat.detect && m.messageStubType == 25) {
         await this.sendMessage(m.chat, { text: edit, mentions: [m.sender]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 26) {
+    } else if (chat.detect && m.messageStubType == 26) {
         await this.sendMessage(m.chat, { text: status, mentions: [m.sender]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 29) {
+    } else if (chat.detect && m.messageStubType == 29) {
         await this.sendMessage(m.chat, { text: admingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`]}, { quoted: fkontak})
-} else if (chat.detect && m.messageStubType == 30) {
-await this.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`]}, { quoted: fkontak})
-} else {
+    } else if (chat.detect && m.messageStubType == 30) {
+        await this.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`]}, { quoted: fkontak})
+    } else {
         console.log({
             messageStubType: m.messageStubType,
             messageStubParameters: m.messageStubParameters,
             type: WAMessageStubType[m.messageStubType],
-})
-}
+        })
+    }
 }
 
 export default handler
