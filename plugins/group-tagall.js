@@ -10,11 +10,11 @@ const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, com
   }
   const pesan = args.join``;
   const oi = `${pesan}`;
-  let emot = `${pickRandom(['𝗕𝗼𝘁'])}`
+  let emot = `${pickRandom(['*McQueen*'])}`
 function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
-  let teks = `╭─────────\n│❏ 𝗧𝗲 𝗘𝘀𝘁𝗮 𝗜𝗻𝘃𝗼𝗰𝗮𝗻𝗱𝗼 𝗣𝘂𝘁𝗶𝘁𝗮 🤖\n│❏ ${emot}v𝗟𝗼𝘃𝗲𝗿𝘀: *${participants.length}* ${oi}\n│❏ 𝗕𝗼𝘁\n│\n`;
+  let teks = `╭─────────\n│❏ *McQueen Te Invoca 😮‍💨\n│❏ ${emot} *Lovers*: *${participants.length}* ${oi}\n│❏ \n│\n`;
   for (const mem of participants) {
     teks += `│🌀 @${mem.id.split('@')[0]}\n`;
   }
