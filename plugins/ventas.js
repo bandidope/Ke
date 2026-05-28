@@ -10,10 +10,6 @@ Owner:
 
 Vendedores:
 : ̗̀➛ 👸🏻 Melisa : Wa.me/51993800613
-: ̗̀➛ 👸🏻 Thali : Wa.me/+573042479614
-: ̗̀➛ 👸🏻 Elizabeth : Wa.me/51960831611
-: ̗̀➛ 👸🏻 TodoBenne' : Wa.me/56931300864
-: ̗̀➛ 👸🏻 Yane : Wa.me/529813279747
 
 Grupo Oficial:
 : ̗̀➛ https://chat.whatsapp.com/Fi6FHZ8VSGnAT7CKJkcd9r
