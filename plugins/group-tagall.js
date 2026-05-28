@@ -14,9 +14,9 @@ const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, com
 function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
-  let teks = `╭─────────\n│❏ *McQueen Te Invoca 😮‍💨\n│❏ ${emot} *Lovers*: *${participants.length}* ${oi}\n│❏ \n│\n`;
+  let teks = `╭─────────\n│❏ *McQueen Te Invoca 😮‍💨\n│❏ ${emot} *Lovers*: *${participants.length}* ${oi}\n│❏ *Un Ganador, 42 Perdedores, Yo Desayuno Perdedores 🤐*\n│\n`;
   for (const mem of participants) {
-    teks += `│🌀 @${mem.id.split('@')[0]}\n`;
+    teks += `│• @${mem.id.split('@')[0]}\n`;
   }
   teks += `│\n╰Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ 🌀`;
   conn.sendMessage(m.chat, {text: teks, mentions: participants.map((a) => a.id)} );
