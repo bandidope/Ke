@@ -51,8 +51,8 @@ var handler = async function (m, conn, db) {
         "120363419947391620@newsletter"
     ]
     let canalNombreM = [
-        "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡",
-        "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡"
+        "Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ 🌀",
+        "Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ 🌀"
     ]
 
     async function getRandomChannel() {
@@ -118,7 +118,7 @@ var handler = async function (m, conn, db) {
             externalAdReply: {
                 showAdAttribution: true,
                 title: "Texto del bot",
-                body: '🚀 𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡',
+                body: '🚀 Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ 🌀',
                 previewType: "PHOTO",
                 thumbnailUrl: "https://raw.githubusercontent.com/JTxs00/uploads/main/1779612711587.jpeg",
                 sourceUrl: "https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m",

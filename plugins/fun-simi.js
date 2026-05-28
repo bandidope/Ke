@@ -1,29 +1,131 @@
-import fetch from "node-fetch";
+import axios from 'axios'
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) {
-    return conn.reply(m.chat, `💥¡Hola! ¿cómo puedo ayudarte hoy?`, m, rcanal);
-  }
+import fetch from 'node-fetch'
 
-  try {
-    // Endpoint de Delirius IA con parámetro q
-    const url = `https://api.delirius.store/ia/chatgpt?q=${encodeURIComponent(text)}`;
-    const res = await fetch(url);
-    const data = await res.json();
+let handler = async (m, { conn, usedPrefix, command, text }) => {
 
-    if (!data || !data.status || !data.data) {
-      return conn.reply(m.chat, "❌ No recibí respuesta de la IA, intenta de nuevo.", m, fake);
-    }
+const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quoted.msg || m.quoted).mimetype.startsWith('image/')
 
-    // Respuesta de la IA
-    await conn.reply(m.chat, `${data.data}`, m, rcanal);
-  } catch (e) {
-    console.error(e);
-    await conn.reply(m.chat, "⚠️ Hubo un error al conectar con la IA.", m, fake);
-  }
-};
+const username = `${conn.getName(m.sender)}`
 
-handler.tags = ["ia"];
-handler.command = handler.help = ["ia", "chatgpt"];
+const basePrompt = `Tu nombre es sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀 y parece haber sido creado por Barboza. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertido, te encanta aprender y sobre todo las explociones. Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}`
 
-export default handler;
+if (isQuotedImage) {
+
+const q = m.quoted
+
+const img = await q.download?.()
+
+if (!img) {
+
+console.error('💛 Error: No image buffer available')
+
+return conn.reply(m.chat, '💛 Error: No se pudo descargar la imagen.', m, fake)}
+
+const content = '💛 ¿Qué se observa en la imagen?'
+
+try {
+
+const imageAnalysis = await fetchImageBuffer(content, img)
+
+const query = '😊 Descríbeme la imagen y detalla por qué actúan así. También dime quién eres'
+
+const prompt = `${basePrompt}. La imagen que se analiza es: ${imageAnalysis.result}`
+
+const description = await luminsesi(query, username, prompt)
+
+await conn.reply(m.chat, description, m)
+
+} catch (error) {
+
+console.error('💛 Error al analizar la imagen:', error)
+
+await conn.reply(m.chat, '💛 Error al analizar la imagen.', m)}
+
+} else {
+
+if (!text) { return conn.reply(m.chat, `💛 *Ingrese su petición*\n💛 *Ejemplo de uso:* ${usedPrefix + command} Como hacer un avión de papel`, m, rcanal)}
+
+await m.react('💬')
+
+try {
+
+const query = text
+
+const prompt = `${basePrompt}. Responde lo siguiente: ${query}`
+
+const response = await luminsesi(query, username, prompt)
+
+await conn.reply(m.chat, response, m)
+
+} catch (error) {
+
+console.error('💛 Error al obtener la respuesta:', error)
+
+await conn.reply(m.chat, 'Error: intenta más tarde.', m)}}}
+
+handler.help = ['chatgpt <texto>', 'ia <texto>']
+
+handler.tags = ['ai']
+
+handler.register = false
+
+// handler.estrellas = 1
+
+handler.command = ['ia', 'simi', 'chatgpt', 'ai', 'chat', 'gpt']
+
+export default handler
+
+// Función para enviar una imagen y obtener el análisis
+
+async function fetchImageBuffer(content, imageBuffer) {
+
+try {
+
+const response = await axios.post('https://Luminai.my.id', {
+
+content: content,
+
+imageBuffer: imageBuffer 
+
+}, {
+
+headers: {
+
+'Content-Type': 'application/json' 
+
+}})
+
+return response.data
+
+} catch (error) {
+
+console.error('Error:', error)
+
+throw error }}
+
+// Función para interactuar con la IA usando prompts
+
+async function luminsesi(q, username, logic) {
+
+try {
+
+const response = await axios.post("https://Luminai.my.id", {
+
+content: q,
+
+user: username,
+
+prompt: logic,
+
+webSearchMode: false
+
+})
+
+return response.data.result
+
+} catch (error) {
+
+console.error('💛 Error al obtener:', error)
+
+throw error }}

@@ -1,141 +1,65 @@
-// HECHO POR DEV.CRISS_VX
-// DEJAR LOS CRÉDITOS MALDITAS ESCORIAS
+import {performance} from 'perf_hooks';
+const handler = async (m, {conn, text}) => {
+  const start = `*☠ ¡¡𝙸𝙽𝙸𝙲𝙸𝙰𝙽𝙳𝙾 𝙳𝙾𝚇𝚇𝙴𝙾!! ☠*`;
+  const boost = `*${pickRandom(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'])}%*`;
+  const boost2 = `*${pickRandom(['21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40'])}%*`;
+  const boost3 = `*${pickRandom(['41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'])}%*`;
+  const boost4 = `*${pickRandom(['61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80'])}%*`;
+  const boost5 = `*${pickRandom(['81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100'])}%*`;
+  await m.reply(start);
+  await m.reply(boost);
+  await m.reply(boost3);
+  await m.reply(boost5);
+  const old = performance.now();
+  const neww = performance.now();
+  const speed = `${neww - old}`;
+  const doxeo = `*[ ✔ ] 𝙿𝙴𝚁𝚂𝙾𝙽𝙰 𝙳𝙾𝚇𝚇𝙴𝙰𝙳𝙰 𝙲𝙾𝙽 𝙴𝚇𝙸𝚃𝙾*\n*⏳ 𝙳𝙾𝚇𝚇𝙴𝙰𝙳𝙾 𝙴𝙽: ${speed} 𝚜𝚎𝚐𝚞𝚗𝚍𝚘𝚜!*
 
-import fetch from 'node-fetch';
-import PhoneNumber from 'awesome-phonenumber';
-import { performance } from 'perf_hooks';
-
-const handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`*${xfun} Por favor, menciona a la persona que deseas doxear.*`);
-
-  const mentionedJid = m.mentionedJid && m.mentionedJid[0];
-  if (!mentionedJid) return m.reply('*⚠️ Debes etiquetar a alguien.*');
-
-
-  const user = mentionedJid.split('@')[0];
-  const pn = new PhoneNumber('+' + user);
-  const regionCode = pn.getRegionCode();
-
-  const countryNames = {
-    US: 'Estados Unidos 🇺🇸', MX: 'México 🇲🇽', AR: 'Argentina 🇦🇷', PE: 'Perú 🇵🇪',
-    CO: 'Colombia 🇨🇴', BR: 'Brasil 🇧🇷', CL: 'Chile 🇨🇱', VE: 'Venezuela 🇻🇪',
-    EC: 'Ecuador 🇪🇨', BO: 'Bolivia 🇧🇴', PY: 'Paraguay 🇵🇾', UY: 'Uruguay 🇺🇾',
-    GT: 'Guatemala 🇬🇹', HN: 'Honduras 🇭🇳', NI: 'Nicaragua 🇳🇮', SV: 'El Salvador 🇸🇻',
-    CR: 'Costa Rica 🇨🇷', PA: 'Panamá 🇵🇦', DO: 'República Dominicana 🇩🇴', CU: 'Cuba 🇨🇺',
-    ES: 'España 🇪🇸', FR: 'Francia 🇫🇷', IT: 'Italia 🇮🇹', DE: 'Alemania 🇩🇪',
-    GB: 'Reino Unido 🇬🇧',
-  };
-
-  const locationByCountry = {
-    US: { city: 'Los Angeles', region: 'California', lat: '34.0522', lon: '-118.2437' },
-    MX: { city: 'CDMX', region: 'Ciudad de México', lat: '19.4326', lon: '-99.1332' },
-    AR: { city: 'Buenos Aires', region: 'Buenos Aires', lat: '-34.6037', lon: '-58.3816' },
-    PE: { city: 'Lima', region: 'Lima Metropolitana', lat: '-12.0464', lon: '-77.0428' },
-    CO: { city: 'Bogotá', region: 'Cundinamarca', lat: '4.7110', lon: '-74.0721' },
-    BR: { city: 'São Paulo', region: 'São Paulo', lat: '-23.5505', lon: '-46.6333' },
-    CL: { city: 'Santiago', region: 'Región Metropolitana', lat: '-33.4489', lon: '-70.6693' },
-    VE: { city: 'Caracas', region: 'Distrito Capital', lat: '10.4806', lon: '-66.9036' },
-    EC: { city: 'Quito', region: 'Pichincha', lat: '-0.1807', lon: '-78.4678' },
-    BO: { city: 'La Paz', region: 'La Paz', lat: '-16.5000', lon: '-68.1500' },
-    PY: { city: 'Asunción', region: 'Asunción', lat: '-25.2637', lon: '-57.5759' },
-    UY: { city: 'Montevideo', region: 'Montevideo', lat: '-34.9011', lon: '-56.1645' },
-    GT: { city: 'Ciudad de Guatemala', region: 'Guatemala', lat: '14.6349', lon: '-90.5069' },
-    HN: { city: 'Tegucigalpa', region: 'Francisco Morazán', lat: '14.0723', lon: '-87.1921' },
-    NI: { city: 'Managua', region: 'Managua', lat: '12.1364', lon: '-86.2514' },
-    SV: { city: 'San Salvador', region: 'San Salvador', lat: '13.6929', lon: '-89.2182' },
-    CR: { city: 'San José', region: 'San José', lat: '9.9281', lon: '-84.0907' },
-    PA: { city: 'Ciudad de Panamá', region: 'Panamá', lat: '8.9824', lon: '-79.5199' },
-    DO: { city: 'Santo Domingo', region: 'Distrito Nacional', lat: '18.4861', lon: '-69.9312' },
-    CU: { city: 'La Habana', region: 'La Habana', lat: '23.1136', lon: '-82.3666' },
-    ES: { city: 'Madrid', region: 'Comunidad de Madrid', lat: '40.4168', lon: '-3.7038' },
-    FR: { city: 'París', region: 'Île-de-France', lat: '48.8566', lon: '2.3522' },
-    IT: { city: 'Roma', region: 'Lacio', lat: '41.9028', lon: '12.4964' },
-    DE: { city: 'Berlín', region: 'Berlín', lat: '52.5200', lon: '13.4050' },
-    GB: { city: 'Londres', region: 'Inglaterra', lat: '51.5074', lon: '-0.1278' },
-  };
-
-  const pais = countryNames[regionCode] || 'Desconocido';
-  const location = locationByCountry[regionCode] || { city: 'Desconocida', region: 'Desconocida', lat: '0.0000', lon: '0.0000' };
-
-
-  const sleep = (ms) => new Promise(res => setTimeout(res, ms));
-  const randomIP = () => `${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;
-  const randomIPv6 = () => Array(8).fill().map(() => Math.floor(Math.random() * 65536).toString(16)).join(':');
-  const randomMAC = () => Array(6).fill().map(() => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join(':');
-  const randomSSN = () => `${Math.floor(100 + Math.random() * 900)}-${Math.floor(10 + Math.random() * 90)}-${Math.floor(1000 + Math.random() * 9000)}`;
-  const randomToken = () => `ghp_${Math.random().toString(36).substring(2, 20)}`;
-  const randomWifi = () => `WiFi-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
-
-  const boosts = [
-    '*☠ ¡¡Iniciando Doxeo!! ☠*',
-    '*25% completado...*',
-    '*47% completado...*',
-    '*62% completado...*',
-    '*97% completado...*'
-  ];
-
-  let sent = await conn.sendMessage(m.chat, { text: boosts[0] }, { quoted: m });
-  for (let i = 1; i < boosts.length; i++) {
-    await sleep(800);
-    await conn.sendMessage(m.chat, { text: boosts[i], edit: sent.key });
-  }
-
-  const start = performance.now();
-  await sleep(500 + Math.floor(Math.random() * 500));
-  const end = performance.now();
-  const speed = ((end - start) / 1000).toFixed(4);
-
-  const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lon}`;
-
-  const doxeo = `*\`👨🏻‍💻 DOXEO FINALIZADO\`*
-> *Realizado en* \`${speed} segundos\`
-
-📆 *${date}*
-⏰ *${hora}*
-
-
-*RESULTADOS OBTENIDOS - V5*
+*𝚁𝙴𝚂𝚄𝙻𝚃𝙰𝙳𝙾𝚂 𝙾𝙱𝚃𝙴𝙽𝙸𝙳𝙾𝚂:*
 
 *Nombre:* ${text}
-*País:* ${pais}
-*Ciudad:* ${location.city}
-*Región:* ${location.region}
-*Latitud:* ${location.lat}
-*Longitud:* ${location.lon}
-*Ubicación:* ${googleMapsUrl}
-*IP Pública:* ${randomIP()}
-*IP Privada:* 192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}
-*IPv6:* ${randomIPv6()}
-*MAC:* ${randomMAC()}
-*SSN:* ${randomSSN()}
-*Token de Acceso:* ${randomToken()}
-*Última actividad:* ${new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })}
-*Red Wi-Fi:* ${randomWifi()}
-*Potencia de Señal:* ${Math.floor(Math.random() * 50 + 50)}%
-*ISP:* MoviNet Corp
+*Ip:* 92.28.211.234
+*N:* 43 7462
+*W:* 12.4893
+*SS NUMBER:* 6979191519182016
+*IPV6:* fe80::5dcd::ef69::fb22::d9888%12 
+*UPNP:* Enabled
+*DMZ:* 10.112.42.15
+*MAC:* 5A:78:3E:7E:00
+*ISP:* Ucom unversal 
 *DNS:* 8.8.8.8
-*ALT DNS:* 1.1.1.1
+*ALT DNS:* 1.1.1.8.1  
+*DNS SUFFIX:* Dlink
+*WAN:* 100.23.10.15
+*WAN TYPE:* private nat
 *GATEWAY:* 192.168.0.1
-*TCP PUERTOS ABIERTOS:* 80, 443, 22
-*UDP PUERTOS ABIERTOS:* 53, 67
-*Vendedor del router:* TP-Link Technologies Co., Ltd.
-*Build ID:* RP3A.210720.052
-*Technology:* Li-ion
-*Dispositivo:* Android 12 - SMA-G998B
-*Navegador:* Chrome 120.0.0.1 (Android)
-*Resolución:* 1080x2340
-*Conexión:* Datos Móviles
-*HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
-
-*Pᴏʀɴʜᴜʙ: @BʏSvyra* FREE CREDITS`;
-
-  await sleep(1000);
-  await conn.sendMessage(m.chat, { text: doxeo, edit: sent.key, mentions: conn.parseMention(doxeo) });
+*SUBNET MASK:* 255.255.0.255
+*UDP OPEN PORTS:* 8080.80
+*TCP OPEN PORTS:* 443
+*ROUTER VENDEDOR:* ERICCSON
+*DEVICE VENDEDOR:* WIN32-X
+*CONNECTION TYPE:* TPLINK COMPANY
+*ICMPHOPS:* 192.168.0.1 192.168.1.1 100.73.43.4
+host-132.12.32.167.ucom.com
+host-132.12.111.ucom.com
+36.134.67.189 216.239.78.11
+Sof02s32inf14.1e100.net
+*HTTP:* 192.168.3.1:433-->92.28.211.234:80
+*Http:* 192.168.625-->92.28.211.455:80
+*Http:* 192.168.817-->92.28.211.8:971
+*Upd:* 192.168452-->92.28.211:7265288
+*Tcp:* 192.168.682-->92.28.211:62227.7
+*Tcp:* 192.168.725-->92.28.211:67wu2
+*Tcp:* 192.168.629-->92.28.211.167:8615
+*EXTERNAL MAC:* 6U:77:89:ER:O4
+*MODEM JUMPS:* 64`;
+  m.reply(doxeo, null, {mentions: conn.parseMention(doxeo)});
 };
-
-handler.help = ['doxear'];
+handler.help = ['doxear <nombre> | <@tag>'];
 handler.tags = ['fun'];
-handler.command = ['doxxeo', 'doxxear', 'doxeo', 'doxear', 'doxxing', 'doxing', 'doxx', 'dox'];
-handler.group = true;
-
+handler.command = /^Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame/i;
 export default handler;
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}

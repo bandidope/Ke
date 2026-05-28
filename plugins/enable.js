@@ -133,7 +133,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let scopeIcon = isAll ? '🌐 Global' : isUser ? '👤 Usuario' : '🏘️ Chat Actual';
 
     let confirm = `
-🪐 *––––  *⚡ Arceus Whois  ⚡*  ––––* 🪐
+🪐 *––––*  *⚡ Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ   ⚡*  *––––* 🪐
 
    ┏━━━━━━━━━━━━━━━━━━━━┓
    ┃  ⚙️  *PANEL DE CONTROL*
@@ -144,7 +144,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
    ┗━━━━━━━━━━━━━━━━━━━━┛
 
    📡 _Sincronizando cambios en el sistema..._
-   *⚡ Arceus Whois  ⚡*`.trim()
+   *⚡ Pᴏᴡᴇʀᴇᴅ Bʏ Tᴇᴀᴍ Nɪɢʜᴛᴡɪsʜ ⚡*`.trim()
 
   m.reply(confirm)
 }
