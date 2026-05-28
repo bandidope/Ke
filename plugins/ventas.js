@@ -3,17 +3,29 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 let handler = async (m, { conn, args, command, usedPrefix }) => {
 if (!args[0]) throw `
-Owners / Vendedores McQueen ⚡ 
+*Holiss , Quieres Saber Los Precios? O Quieres Revender El Bot ? 🥴*
 
-Owner:
-: ̗̀➛ 👑 Whois : Wa.me/51936994155
+Acá Te Dejo Los Precios De McQueen Bot ⚡
 
-Vendedores:
-: ̗̀➛ 👸🏻 Melisa : Wa.me/51993800613
+> *PRECIOS GRUPO MENSUAL :*
+- 🌀 Grupo X1 = 3 Soles
+- 🌀 Grupo X3 = 7 Soles
+- 🌀 Grupo X5 = 10 Soles
 
-Grupo Oficial:
-: ̗̀➛ https://chat.whatsapp.com/Fi6FHZ8VSGnAT7CKJkcd9r
-                 
+> *PRECIOS GRUPO PERMANENTE :*
+- 🌀 Grupo X1 = 5 Soles
+- 🌀 Grupo X3 = 10 Soles
+- 🌀 Grupo X5 = 15 Soles
+
+> *PRECIOS BOT PERSONALIZADO :*
+- 🌀 Bot Personalizado ( Termux ) = 18 Soles
+- 🌀 Servidor Mensual : 10 Soles
+- 🌀 Archivos Premium Bot = 35 Soles
+- 🌀 Bot Personalizado + Servidor = 25 Soles
+
+*Nota :* Recuerda Al Revender Ganarás El 40% De Lo Que Vendas Ya Sea Mensual , Permanente, Menos El Producto ( Servidor ) 
+
+https://chat.whatsapp.com/Fi6FHZ8VSGnAT7CKJkcd9r?mode=gi_t
 ` 
 }
 handler.help = ['comprar']
