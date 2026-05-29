@@ -1,48 +1,21 @@
-import axios from 'axios';
-import fs from 'fs';
+            case 'bratv': {
+                text = m.quoted?.text || text
+                if (!text) return conn.sendMessage(m.chat, {
+                    text: `> . ﹡ ﹟ 🖤 ׄ ⬭ *¡ʙʀᴀᴛ ᴀɴɪᴍᴀᴅᴏ!*
 
-const fetchStickerVideo = async (text) => {
-  const response = await axios.get(`https://skyzxu-brat.hf.space/brat-animated`, { params: { text }, responseType: 'arraybuffer' });  
-  if (!response.data) throw new Error('Error al obtener el video de la API.');
-  return response.data;
-};
+*ㅤꨶ〆⁾ ㅤׄㅤ⸼ㅤׄ *͜🖤* ㅤ֢ㅤ⸱ㅤᯭִ*
 
-export default {
-  command: ['bratv'],
-  category: 'sticker',
-  run: async (client, m, args, usedPrefix, command, text) => {
-    try {
-      text = m.quoted?.text || text;
-      if (!text) {
-        return client.reply(m.chat, '《✧》 Por favor, responde a un mensaje o ingresa un texto para crear el Sticker.', m);
-      }      
-      await m.react('🕒');
-      let user = global.db.data.users[m.sender] || {};
-      const name = user.name || m.sender.split('@')[0];
-      let texto1 = user.metadatos || ``;
-      let texto2 = user.metadatos2 || `@${name}`;      
-      const videoBuffer = await fetchStickerVideo(text);
-      const tmpFile = `./tmp-${Date.now()}.mp4`;
-      fs.writeFileSync(tmpFile, videoBuffer);
-      await client.sendVideoAsSticker(m.chat, tmpFile, m, { packname: texto1, author: texto2 });
-      fs.unlinkSync(tmpFile);
-      await m.react('✔️');
-    } catch (e) {
-      await m.react('✖️');
-      return m.reply(`> An unexpected error occurred while executing command *${usedPrefix + command}*. Please try again or contact support if the issue persists.\n> [Error: *${e.message}*]`);
-    }
-  }
-};(m.chat, { react: { text: '✅', key: m.key}})
+ׅㅤ𓏸𓈒ㅤׄ *ᴜsᴏ* :: \`#bratv (texto)\`
+ׅㅤ𓏸𓈒ㅤׄ *ᴇᴊᴇᴍᴘʟᴏ* :: \`#bratv hola mundo\`
+ׅㅤ𓏸𓈒ㅤׄ *ɴᴏᴛᴀ* :: ɢᴇɴᴇʀᴀ ꜱᴛɪᴄᴋᴇʀ ᴀɴɪᴍᴀᴅᴏ
 
-} catch (e) {
-    console.error(e)
-    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key}})
-    m.reply('Error al crear el sticker de video')
-}
-}
-
-handler.help = ['bratv <texto>']
-handler.tags = ['sticker']
-handler.command = /^bratv$/i
-
-export default handler
+> . ﹡ ﹟ ⚡ ׄ ⬭ *ᴀsᴛᴀ-ʙᴏᴛ-ᴍᴅ*`.trim(),
+                    contextInfo: { ...rcanal }
+                }, { quoted: m })
+                await m.react('🕒')
+                const videoBuffer = await fetchStickerVideo(text)
+                const stickerBuffer = await sticker(videoBuffer, null, texto1, texto2)
+                await conn.sendMessage(m.chat, { sticker: stickerBuffer }, { quoted: m })
+                await m.react('✔️')
+                break
+            }
