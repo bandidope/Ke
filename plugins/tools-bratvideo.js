@@ -8,7 +8,7 @@ let handler = async (m, { conn, args}) => {
     const texto = args.join(' ')
     if (!texto) throw new Error('Ejemplo:.bratv hola mundo')
 
-    const urlApi = `https://api.betabotz.eu.org/api/maker/brat-video?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
+    const urlApi = `https://api.betabotz.eu.org/api/maker/brat-video?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`
 
     const respuesta = await fetch(urlApi)
     if (!respuesta.ok) throw new Error('Error al obtener el video')
