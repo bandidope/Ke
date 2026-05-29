@@ -1,40 +1,44 @@
-import fetch from 'node-fetch'
-import { Sticker} from 'wa-sticker-formatter'
+import axios from 'axios'
+import { sticker } from '../lib/sticker.js'
 
-let handler = async (m, { conn, args}) => {
-  await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key}})
-
-  try {
-    const texto = args.join(' ')
-    if (!texto) throw new Error('Ejemplo:.bratv hola mundo')
-
-    const urlApi = `https://api.betabotz.eu.org/api/maker/brat-video?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`
-
-    const respuesta = await fetch(urlApi)
-    if (!respuesta.ok) throw new Error('Error al obtener el video')
-
-    const videoBuffer = await respuesta.buffer()
-    const sticker = new Sticker(videoBuffer, {
-      pack: 'Video BRAT',
-      author: 'Yupra AI',
-      type: 'crop',
-      quality: 50
-})
-
-    await conn.sendMessage(m.chat, {
-      sticker: await sticker.toBuffer()
-}, { quoted: m})
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key}})
-
-} catch (e) {
-    console.error(e)
-    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key}})
-    m.reply('Error al crear el sticker de video')
-}
+const fetchStickerVideo = async (text) => {
+    const response = await axios.get(`https://api.nekorinn.my.id/maker/bratvid`, {
+        params: { text },
+        responseType: 'arraybuffer'
+    })
+    if (!response.data) throw new Error('Error al obtener el video de la API.')
+    return response.data
 }
 
-handler.help = ['bratv <texto>']
+let handler = async (m, { conn, text }) => {
+    if (m.quoted && m.quoted.text) {
+        text = m.quoted.text
+    } else if (!text) {
+        return conn.sendMessage(m.chat, {
+            text: '❀ Por favor, responde a un mensaje o ingresa un texto para crear el Sticker.'
+        }, { quoted: m })
+    }
+
+    let userId = m.sender
+    let packstickers = global.db.data.users[userId] || {}
+    let texto1 = packstickers.text1 || global.packsticker
+    let texto2 = packstickers.text2 || global.packsticker2
+
+    try {
+        const videoBuffer = await fetchStickerVideo(text)
+        const stickerBuffer = await sticker(videoBuffer, null, texto1, texto2)
+        await conn.sendMessage(m.chat, {
+            sticker: stickerBuffer
+        }, { quoted: m })
+    } catch (e) {
+        await conn.sendMessage(m.chat, {
+            text: `⚠︎ Ocurrió un error: ${e.message}`
+        }, { quoted: m })
+    }
+}
+
+handler.help = ['bratvid <texto>']
 handler.tags = ['sticker']
-handler.command = /^bratv$/i
+handler.command = ['bratvid', 'bratv']
 
 export default handler
