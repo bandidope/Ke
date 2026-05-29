@@ -1,94 +1,40 @@
-let { 
-    sticker5 
-} = require('../lib/sticker')
-let fs = require('fs')
-let fetch = require('node-fetch')
+import fetch from 'node-fetch'
+import { Sticker} from 'wa-sticker-formatter'
 
-let handler = async (m, {
-    conn, 
-    args, 
-    text, 
-    usedPrefix, 
-    command
-}) => {
-    const packname = global.packname
-    const author = global.author
-    
-    text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : ''
-    if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`
-    
-    let res;
-    var error = fs.readFileSync(`./media/sticker/emror.webp`)
-    
-    try {
-        if (command === 'attp') {
-            res = `https://api.betabotz.eu.org/api/maker/attp?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
-            let fetchResult = await fetch(res)
-            let imageBuffer = await fetchResult.buffer()
-            
-            let stiker = await sticker5(
-                imageBuffer,
-                null,
-                packname,
-                author,
-                ['🎨']
-            )
-            
-            if (stiker) {
-                await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-            } else {
-                throw new Error('Pembuatan stiker gagal')
-            }
-        } else if (command === 'ttp') {
-            res = `https://api.betabotz.eu.org/api/maker/ttp?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
-            let fetchResult = await fetch(res)
-            let imageBuffer = await fetchResult.buffer()
-            
-            let stiker = await sticker5(
-                imageBuffer,
-                null,
-                packname,
-                author,
-                ['🎨']
-            )
-            
-            if (stiker) {
-                await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-            } else {
-                throw new Error('Pembuatan stiker gagal')
-            }
-        } else if (command === 'brat') {
-            res = `https://api.betabotz.eu.org/api/maker/brat?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
-            let fetchResult = await fetch(res)
-            let imageBuffer = await fetchResult.buffer()
-            
-            let stiker = await sticker5(
-                imageBuffer,
-                null,
-                packname,
-                author,
-                ['🎨']
-            )
-            
-            if (stiker) {
-                await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-            } else {
-                throw new Error('Pembuatan stiker gagal')
-            }
-        } else if (command === 'bratvideo') {
-            res = `https://api.betabotz.eu.org/api/maker/brat-video?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
-            await conn.sendVideoAsSticker(m.chat, res, m, { packname: packname, author: author })
-        }
-        
-    } catch (e) {
-        console.error('Error:', e)
-        await conn.sendFile(m.chat, error, 'error.webp', '', m)
-    }
+let handler = async (m, { conn, args}) => {
+  await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key}})
+
+  try {
+    const texto = args.join(' ')
+    if (!texto) throw new Error('Ejemplo:.bratv hola mundo')
+
+    const urlApi = `https://api.betabotz.eu.org/api/maker/brat-video?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${lann}`;
+
+    const respuesta = await fetch(urlApi)
+    if (!respuesta.ok) throw new Error('Error al obtener el video')
+
+    const videoBuffer = await respuesta.buffer()
+    const sticker = new Sticker(videoBuffer, {
+      pack: 'Video BRAT',
+      author: 'Yupra AI',
+      type: 'crop',
+      quality: 50
+})
+
+    await conn.sendMessage(m.chat, {
+      sticker: await sticker.toBuffer()
+}, { quoted: m})
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key}})
+
+} catch (e) {
+    console.error(e)
+    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key}})
+    m.reply('Error al crear el sticker de video')
+}
 }
 
-handler.command = handler.help = ['attp', 'ttp', 'brat', 'bratvideo']
+handler.help = ['bratv <texto>']
 handler.tags = ['sticker']
-handler.limit = true
-handler.group = false
+handler.command = /^bratv$/i
 
-module.exports = handler
+export default handler
