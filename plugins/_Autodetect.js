@@ -18,8 +18,8 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
         },
         message: {
             locationMessage: {
-                name: "𝗠𝗰𝗤𝘂𝗲𝗲𝗻 𝗕𝗼𝘁 ⚡",
-                jpegThumbnail: await (await fetch('https://cdn.adoolab.xyz/dl/985b1ed9.jpg
+                name: "*McQueen Bot MD 🌀*",
+                jpegThumbnail: await (await fetch('https://cdn.adoolab.xyz/dl/985b1ed9.jpg')).buffer(),
                 vcard:
                     "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
