@@ -10,12 +10,11 @@ let handler = async (m, { isPrems, conn, }) => {
 
 👑 𝙁𝙍𝙀𝙀 𝙁𝙄𝙍𝙀 👑
 🖤 ➺ 🎫.donarsala
-🖤 ➺ 🎮.apostado ( próximamente )
+🖤 ➺ 🎮.apostado
 🖤 ➺ 🎮.by ( próximamente )
 ⚔ ➺.4𝘷𝘴4 
 ⚔ ➺.6𝘷𝘴6 
 ⚔ ➺.8𝘷𝘴8 
-⚔ ➺.𝘴𝘤𝘳𝘪𝘮 
 ⚔ ➺.12𝘷𝘴12 
 ⚔ ➺.16𝘷𝘴16 
 
