@@ -6,13 +6,13 @@ if (!args[0]) throw `
 ╰› 4 Versus 4 Ი𐑼
 ⊹ ࣪ ˖🕚 🇵🇪  | 🇦🇷   |  🇨🇱 
 ૮🩹ა *Encargad@*: 
-˚꒰🏡୭ *Reglas :*
+˚꒰🏡୭ *Reglas :* 
 ˚꒰🆚୭ *Rival :* 
 𓍼   ׅ *Titulares :*
-🍮|  
-🍮|  
-🍮|  
-🍮|  
+⚡|  
+⚡|  
+⚡|  
+⚡|  
 𓍼         ִ  *Suplentes :*
 🐾𑁤  
 🐾𑁤
