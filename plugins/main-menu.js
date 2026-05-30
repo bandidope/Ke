@@ -56,7 +56,7 @@ const handler = async (m, { conn, usedPrefix }) => {
       admin: '🔹', otros: '🧩', econ: '🔹', tools: '🔹', audio: '🔹',
       descargas: '📥', search: '🔭', info: 'ℹ️', buscador: '🔹',
       búsquedas: '🔹', dl: '🔹', anime: '🏮', random: '🔹',
-      freefire: '🔫', descarga: '🔹', nable: '🔹', fun: '🔹',
+      FreeFire: '🔫', descarga: '🔹', nable: '🔹', fun: '🔹',
       diversión: '🎮', consultor: '🔹', sticker: '🎭', maker: '🔹',
       game: '🔹', arte: '🔹', cocina: '🔹', gacha: '🔹', ia: '🔹',
       group: '👥', grupo: '🔹', ai: '🔹', staff: '🔹', main: '🔹',
