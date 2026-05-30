@@ -21,14 +21,12 @@ if (!args[0]) throw `
 ⚡|  
 
 𓍼   ׅ *Escuadra 3 :*
-
 ⚡|  
 ⚡|  
 ⚡|  
 ⚡|  
 
 𓍼   ׅ *Escuadra 4 :*
-
 ⚡|  
 ⚡|  
 ⚡|  
