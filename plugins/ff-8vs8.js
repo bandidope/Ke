@@ -28,7 +28,7 @@ if (!args[0]) throw `
 ` 
 }
 handler.help = ['8vs8']
-handler.tags = ['FreeFire']
+handler.tags = ['ff']
 handler.command = /^(8vs8)$/i
 handler.group = false
 handler.admin = false
