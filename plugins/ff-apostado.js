@@ -40,9 +40,9 @@ if (!args[0]) throw `
 ᨳ࣪ Cuentαs -45
 ` 
 }
-handler.help = ['apos']
+handler.help = ['apostado']
 handler.tags = ['ff']
-handler.command = /^(apos)$/i
+handler.command = /^(apostado)$/i
 handler.group = false
 handler.admin = false
 export default handler
