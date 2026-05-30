@@ -8,15 +8,18 @@ if (!args[0]) throw `
 ૮🩹ა *Encargad@*: 
 ˚꒰🏡୭ *Reglas :* 
 ˚꒰🆚୭ *Rival :* 
-𓍼   ׅ *Titulares :*
+𓍼   ׅ *Escuadra 1 :*
 ⚡|  
 ⚡|  
 ⚡|  
 ⚡|  
+
+𓍼   ׅ *Escuadra 2 :*
 ⚡|  
 ⚡|  
 ⚡|  
 ⚡|  
+
 𓍼         ִ  *Suplentes :*
 🐾𑁤  
 🐾𑁤  
