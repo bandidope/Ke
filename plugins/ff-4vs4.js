@@ -19,7 +19,7 @@ if (!args[0]) throw `
 ` 
 }
 handler.help = ['4vs4']
-handler.tags = ['FreeFire']
+handler.tags = ['ff']
 handler.command = /^(4vs4)$/i
 handler.group = false
 handler.admin = false
